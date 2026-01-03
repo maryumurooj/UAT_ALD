@@ -1,0 +1,83 @@
+
+
+.SUwrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height: 100vh;
+  background-color:black;
+
+}
+.SUcontainer{
+  position: relative;
+  width: 60vw;
+  height: 80vh;
+
+  background: #fff;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.2);
+  display:inline-flex;
+  flex-direction:column;
+  gap: 20px;
+}
+
+
+
+.SUinput{
+  width: 100%;
+  height:50px;
+  padding: 20px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 35px;
+  font-size: 16px;
+  transition: .5s;
+  box-shadow: 0 0 15px rgba(0,0,0,.2);
+}
+
+.SUTitle{
+  padding:20px 20px 20px 0px;
+  font-size:50px;
+}
+
+.SUicon{
+  position:absolute;
+  right:60px;
+  TRANSFORM: translateY(95%);
+  font-size:16px;
+}
+
+.SUrememberforget{
+  display:flex;
+  justify-content:space-between;
+  color:rgba(0,0,0,.5);
+
+}
+.SUbutton{
+  height: 45px;
+  border: none;
+  border-radius: 30px;
+  background-color: #dc3a04;
+  font-size:18px;
+  cursor:pointer;
+  font-weight:700;
+  color:white; 
+  width: 25%;
+
+}
+
+.SUbutton:hover{
+  background-color: #000000;
+}
+
+.SUTitle{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+}
+
+.SUinputbox{
+  display:flex;
+  gap: 20px;
+}

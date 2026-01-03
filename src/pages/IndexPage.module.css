@@ -1,0 +1,187 @@
+/* General Styles */
+.IndexPage {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.indexcont{
+  overflow-y: scroll;
+}
+/* Scrollable Text Container */
+.scrollableText {
+  height: 62vh;
+  font-size: 12px; /* Adjusted for readability */
+  line-height: 1.5;
+  overflow-y: auto;
+  background-color: #ececec;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  width: 85vw; /* Make responsive */
+  max-width: 1080px; /* Limit max width */
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px; /* Adjusted for cleaner corners */
+  padding: 20px; /* Adjusted for comfortable spacing */
+  position: relative;
+  box-shadow: 
+      inset -3px -3px 5px rgba(142, 142, 142, 0.6),
+      inset 3px 3px 5px rgba(0, 0, 0, 0.1),
+      5px 5px 15px rgba(231, 231, 231, 0.1), 
+      -5px -5px 4px rgba(255, 255, 255, 0.8);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+}
+
+
+/* Scrollbar Styling */
+.scrollableText::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+}
+
+.scrollableText::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.scrollableText:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Headers */
+h3, h2 {
+  text-align: center;
+}
+
+/* Side and Scroll */
+.sideNscroll {
+  display: flex;
+  position: relative;
+}
+
+/* Page Up Button */
+.pageUpButton {
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+
+/* Full Screen Container */
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullScreenText {
+  overflow: auto;
+  width: 90%;
+  height: 90%;
+  max-width: 1700px;
+  max-height: 900px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #d12300;
+  box-shadow: 0px 0px 10px #d12300;
+  padding: 20px;
+}
+
+/* Full Screen Close Button */
+.fullScreenButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* Spinner Container */
+.spinnercontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 71vh;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .scrollableText {
+      font-size: 11px;
+      padding: 15px;
+  }
+
+  .pageUpButton {
+      width: 35px;
+      height: 35px;
+      font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollableText {
+      font-size: 10px;
+      width: 95%;
+  }
+
+  .pageUpButton {
+      width: 30px;
+      height: 30px;
+      font-size: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .scrollableText {
+      height: 60vh;
+      font-size: 9px;
+  }
+
+  .pageUpButton {
+      width: 25px;
+      height: 25px;
+      font-size: 8px;
+  }
+}

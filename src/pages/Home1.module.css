@@ -1,0 +1,176 @@
+.container {
+  position: relative;
+}
+
+.image {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 25vw;
+  height: 500px;
+  padding-top: 15px;
+  margin-left:25px;
+  border-radius: 10px; /* Add border radius */
+}
+
+.searchBar {
+  position: absolute;
+  width: 600px;
+  height: 70px;
+  left: 50%; /* Center the search bar horizontally */
+  top: 69%; /* Center the search bar vertically */
+  transform: translate(-50%, -50%);
+  background: #dedede;
+  backdrop-filter: blur(590.45px);
+  border-radius: 87px;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.searchBar input {
+  width: 575px; /* Adjust width as needed */
+  height: 57px;
+  background: #cfcfcf;
+  backdrop-filter: blur(590.45px);
+  border-radius: 100px;
+  padding: 25px; /* Adjust as needed */
+  font-size: 18px; /* Adjust as needed */
+  border: none;
+  outline: none;
+  text-align: left; /* Align text in the center */
+  margin-top:1px;
+
+}y
+
+.searchIcon {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  fill: #8f8f8f; /* Adjust color as needed */
+  margin-left: 10px; /* Adjust spacing from the input */
+  position: absolute; /* Position the icon */
+  right: 25px; /* Adjust as needed */
+  cursor: pointer; /* Add pointer cursor */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Center vertically */
+
+}
+
+.title {
+  width: 396px;
+  height: 60px;
+  font-family: 'Palatino';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 60px;
+  text-decoration-line: underline;
+  color: #000000;
+
+}
+
+.judgementTitle {
+  font-size:25px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Increase vertical gap */
+}
+
+.judgementInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Increase vertical gap */
+}
+
+.judgementDetails {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Increase vertical gap */
+}
+
+.judgementDate {
+  display: flex;
+  flex-direction: column;
+  color: #B22525;
+  margin-bottom: 15px; /* Increase vertical gap */
+}
+
+.judgementTitle {
+  font-weight: bold;
+  margin-bottom: 15px; /* Increase vertical gap */
+}
+
+.readMore {
+  font-weight: bold;
+}
+
+.arrow {
+  margin-left: 5px;
+}
+.latestJudgements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-left:90px;
+}
+
+.judgementlinecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 2px solid #000000;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+/* Additional styles for positioning */
+.judgementlinecontainer:nth-child(odd) {
+  margin-right: 15px; /* Add right margin to odd containers */
+  margin-bottom: -198px; /* Adjust margin bottom to align with even containers */
+}
+
+.judgementlinecontainer:nth-child(even) {
+  margin-left: 575px; /* Add left margin to even containers */
+}
+
+
+.aboutTitle {
+  font-family: "Palatino";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 60px;
+  color: #000000;
+  text-decoration-line: underline;
+  margin-top:30px;
+}
+
+.aboutPara {
+  font-family: "Palatino";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  color: #000000;
+
+}
+.Aboutlinecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 20px;
+  margin-bottom: 0px;
+  margin-top:10px;
+}
+

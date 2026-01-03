@@ -1,0 +1,86 @@
+/* Marquee.module.css */
+
+.container {
+   margin: auto;
+  background: #f9f9f9;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .currentMarqueeContainer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 15px;
+    transition: transform 0.6s ease-in-out;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    h2{
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    h5{
+        font-style: italic;
+        
+    }
+    p{
+        margin: 0;
+    }
+  }
+  .currentMarqueeContainer:hover{
+    background-color: rgba(0, 0, 0, 0.104);
+    transform: scale(1.01);
+    
+  }
+  
+  .currentMarqueeContainer h2 {
+    margin-top: 0;
+  }
+  
+  .inputContainer {
+    padding: 10px;
+
+  }
+  
+  .inputContainer label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .inputContainer textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .inputContainer button {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #dc3a04;
+    border: none;
+    border-radius: 5px;
+padding: 10px;
+font-size: medium;
+color: white;
+
+&:hover{
+  background-color: black;
+  cursor: pointer;
+}
+  }
+  
+  .inputContainer button:last-child {
+    margin-right: 0;
+  }

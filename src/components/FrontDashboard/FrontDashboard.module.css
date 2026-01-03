@@ -1,0 +1,217 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px; /* Remove padding */
+  margin: 0; /* Remove margin */
+  font-size: 15px;
+  color: #000;
+  font-weight: 400;
+  margin-left: 130px;
+  position: relative;
+  top: 0; /* Ensure the dashboard starts from the top */
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  border: none; /* Remove border around content */
+  overflow: visible; /* Ensure no overflow of rounded corners */
+  padding: 2px;
+}
+
+.folderTabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.folderTabs button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.activeTab {
+  background: #ff0000 !important;
+  color: white !important;
+}
+.inactiveTab{
+  color: #898989;
+  background-color: #d0d0d0;
+}
+.inactiveTab:hover{
+  color: white;
+  background-color: #555;
+}
+.folderButtons{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modaltitle{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.textButton {
+  background-color: #f6f6f6; /* Default background color */
+  color: #000; /* Default text color */
+  font-weight: 550; /* Increased font weight for a more button-like feel */
+  font-size: 14px;
+  border: none; /* Remove default border */
+  border-left: 0px solid #949494; /* Vertical border between middle buttons */
+  border-right: 1px solid #949494; /* Vertical border between middle buttons */
+  border-bottom: 1px solid #949494; /* Red bottom border */
+  padding: 10px 14px; /* Adjust padding for button size */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s; /* Smooth transitions */
+  font-family: 'Palatino';
+
+  /* Add box shadow for depth */
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.textButton:first-child {
+  border-top-left-radius: 0px; /* Remove top-left corner rounding */
+  border-bottom-left-radius: 25px; /* Rounded bottom-left corner for the first button */
+  border-left: 2px solid #949494; /* Vertical border between middle buttons */
+}
+
+.textButton:last-child {
+  border-top-right-radius: 0px; /* Remove top-right corner rounding */
+  border-bottom-right-radius: 25px; /* Rounded bottom-right corner for the last button */
+  border-right: 2px solid #949494; /* Vertical border between middle buttons */
+}
+
+.textButton:not(:first-child):not(:last-child) {
+  border-left: 0.5px solid #ffffff; /* Vertical border between middle buttons */
+}
+
+.textButton:hover {
+  background-color: #f0f0f0; /* Lighten background on hover */
+  transform: translateY(1px); /* Slight vertical movement */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Reduce shadow to make it look pressed */
+}
+
+.textButton.active {
+  background-color: #E34A3E; /* Background color for active state */
+  color: #fff; /* Text color for active state */
+  font-weight: 600; /* Increase font weight for emphasis */
+  box-shadow: 0 0 10px rgba(227, 74, 62, 0.5); /* Glow effect */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.textButtonWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #fff;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modalContent h2 {
+  margin: 0 0 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modalContent label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  color: #555;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.modalContent select,
+.modalContent input,
+.modalContent textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 90%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.modalContent textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modalContent select {
+  background-color: white;
+}
+
+.modalContent select:empty::after {
+  content: 'No folders available';
+  color: #666;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modalActions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.modalActions button[type="submit"] {
+  background-color: #E34A3E;
+  color: white;
+}
+
+.modalActions button[type="button"] {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.modalActions button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1200px){
+  
+  .textButton{
+    font-size: x-small;
+  }
+
+}

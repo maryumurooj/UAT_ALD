@@ -1,0 +1,202 @@
+:root {
+  --primary-bg: #f8f8f8;
+  --primary-shadow: #d1d1d1;
+  --highlight-shadow: #ffffff;
+  --main-accent: #eaeaea;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw; /* Increased width */
+  max-width: 1450px; /* Limit width for large screens */
+  margin: 1% auto;
+  font-size: calc(0.9rem + 0.1vw); /* Slightly smaller font size */
+  color: #000;
+  font-weight: 600;
+}
+
+.rectangle {
+  background-color: var(--primary-bg);
+  border-radius: 15px;
+  border: 2px solid #949494;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.5rem 1rem;
+  justify-content: space-between; /* Spreads items evenly with equal space between them */
+  align-items: center; /* Centers items vertically */
+}
+
+.dateLabel,
+.toLabel {
+  font-family: 'Palatino', serif;
+  margin: auto 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 0.9rem; /* Reduced font size */
+  padding: 0.2rem 0.4rem; /* Smaller padding */
+}
+
+.clearButton,
+.prevCaseButton,
+.searchButton,
+.padButton,
+.paginationInfo,
+.showButton {
+  font-family: 'Palatino', serif;
+  font-size: 0.8rem; /* Smaller font size */
+  padding: 0.4rem 0.8rem; /* Smaller padding */
+  border-radius: 6px; /* Reduced border radius */
+  background: var(--primary-bg);
+  box-shadow: inset 4px 4px 8px var(--primary-shadow),
+              inset -4px -4px 8px var(--highlight-shadow);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #333;
+}
+
+.clearButton:hover,
+.prevCaseButton:hover,
+.searchButton:hover,
+.padButton:hover,
+.showButton:hover {
+  box-shadow: 4px 4px 8px var(--primary-shadow),
+              -4px -4px 8px var(--highlight-shadow);
+}
+
+.caseInfo {
+  width: 9rem; /* Increased width for better content fit */
+  padding: 0.3rem 0.5rem; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Palatino', serif;
+  font-size: 0.7rem;
+  color: #333;
+  background: var(--primary-bg);
+  box-shadow: 4px 4px 8px var(--primary-shadow),
+              -4px -4px 8px var(--highlight-shadow);
+}
+
+.dateInput,
+.searchblock,
+.allDropdown {
+  font-family: 'Palatino', serif;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  border-radius: 6px;
+  background: var(--primary-bg);
+  box-shadow: inset 4px 4px 8px var(--primary-shadow),
+              inset -4px -4px 8px var(--highlight-shadow);
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.dateRangeSelector,
+.allSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden ;
+  border-spacing: 0;
+  margin-top: 0.5%;
+ width: 90%;
+  background-color: var(--primary-bg);
+  box-shadow: 4px 4px 8px var(--primary-shadow),
+              -4px -4px 8px var(--highlight-shadow);
+  
+ 
+}
+
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Reduced spacing */
+  width: 100%;
+}
+
+.paginationContainer {
+  display: flex;
+  gap: 0.5rem; /* Reduced spacing */
+  justify-content: center;
+}
+
+.paginationButton {
+  font-family: 'Palatino', serif;
+  font-size: 0.8rem; /* Smaller font size */
+  padding: 0.3rem 0.6rem; /* Smaller padding */
+  border-radius: 6px;
+  background: var(--primary-bg);
+  box-shadow: inset 4px 4px 8px var(--primary-shadow),
+              inset -4px -4px 8px var(--highlight-shadow);
+  border: none;
+  cursor: pointer;
+}
+
+.paginationButton:hover {
+  box-shadow: 4px 4px 8px var(--primary-shadow),
+              -4px -4px 8px var(--highlight-shadow);
+}
+
+.paginationInfo {
+  font-family: 'Palatino', serif;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: var(--primary-bg);
+  box-shadow: inset 4px 4px 8px var(--primary-shadow),
+              inset -4px -4px 8px var(--highlight-shadow);
+  border: none;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1280px) {
+  .main {
+    width: 85%;
+  }
+
+ 
+}
+
+@media (max-width: 768px) {
+  .main {
+    font-size: calc(0.7rem + 0.1vw);
+  }
+
+  .paginationContainer {
+    flex-direction: column;
+  }
+}
+
+/* Reduce width for 14-inch screens (1366px and below) */
+@media (max-width: 1366px) {
+  .main {
+    width: 90vw; /* Reduce width slightly */
+    max-width: 1200px; /* Limit width */
+  }
+
+  .table {
+    width: 90vw; /* Adjust table width */
+  }
+
+  .rectangle {
+    width: 90%;
+    padding: 0.4rem 0.8rem; /* Reduce padding */
+  }
+}
+
+

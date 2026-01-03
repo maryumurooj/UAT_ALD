@@ -1,0 +1,525 @@
+.container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  max-width: 100dvw;
+  min-height: 87dvh;
+  background-color: #f9f9f9;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Metadata Widget - IMPROVED CONTRAST */
+.metadataWidget {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Darker shadow */
+  padding: 12px 16px;
+  display: flex;
+  gap: 16px;
+  z-index: 1000;
+  border: 1px solid #d0d0d0; /* Darker border - was #eee */
+}
+
+.metaItem {
+  text-align: center;
+  min-width: 50px;
+}
+
+.metaNumber {
+  display: block;
+  font-size: 20px; /* Increased from 18px */
+  font-weight: 700; /* Increased from 600 */
+  color: #E34A3E;
+  line-height: 1;
+}
+
+.metaLabel {
+  font-size: 12px; /* Increased from 11px */
+  color: #444; /* Darker - was #666 */
+  margin-top: 4px; /* Increased spacing */
+  display: block;
+  font-weight: 500; /* Added weight */
+}
+
+/* Title Section */
+.titleSection {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 22px; /* Increased from 20px */
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #333 */
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Controls Section - IMPROVED VISIBILITY */
+.controlsSection {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12); /* Slightly darker */
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  border: 1px solid #d0d0d0; /* Added visible border */
+}
+
+/* Main Content - Side by Side with Fixed Height */
+.mainContent {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Left Panel - IMPROVED CONTRAST */
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.padsSection {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid #d0d0d0; /* Added border */
+}
+
+.sectionHeader {
+  padding: 14px 16px; /* Slightly increased */
+  background-color: #f0f0f0; /* Slightly darker - was #f5f5f5 */
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid #c0c0c0; /* Darker and thicker - was 1px #eee */
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #333 */
+  margin: 0;
+}
+
+.padsList {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Increased from 6px */
+  min-height: 0;
+}
+
+/* Custom Scrollbar for Pads List */
+.padsList::-webkit-scrollbar {
+  width: 8px; /* Increased from 6px */
+}
+
+.padsList::-webkit-scrollbar-track {
+  background: #e8e8e8; /* Darker - was #f1f1f1 */
+  border-radius: 4px;
+}
+
+.padsList::-webkit-scrollbar-thumb {
+  background: #E34A3E;
+  border-radius: 4px;
+}
+
+.padsList::-webkit-scrollbar-thumb:hover {
+  background: #c9352b; /* Darker hover */
+}
+
+/* Compact Pad Tiles - IMPROVED VISIBILITY */
+.padTile {
+  background: #fff;
+  border: 2px solid #d0d0d0; /* Thicker and darker - was 1px #eee */
+  border-radius: 6px;
+  padding: 12px; /* Increased from 10px */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 85px; /* Slightly increased */
+  flex-shrink: 0;
+}
+
+.padTile:hover {
+  border-color: #E34A3E;
+  box-shadow: 0 3px 8px rgba(227, 74, 62, 0.15); /* Stronger shadow */
+  transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.selectedPad {
+  border-color: #E34A3E;
+  border-width: 2px;
+  background-color: #fff5f4; /* Slightly more saturated - was #fef2f2 */
+  box-shadow: 0 3px 10px rgba(227, 74, 62, 0.25);
+}
+
+.padTileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px; /* Increased from 6px */
+}
+
+.padNumber {
+  font-size: 13px; /* Increased from 12px */
+  font-weight: 700; /* Increased from 600 */
+  color: #E34A3E;
+  background-color: #ffe8e6; /* More visible - was #fef2f2 */
+  padding: 3px 8px; /* Increased padding */
+  border-radius: 4px;
+}
+
+.resultCount {
+  font-size: 15px; /* Increased from 14px */
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #333 */
+}
+
+.deleteTileButton {
+  background: #f5f5f5; /* Added background */
+  border: 1px solid #d0d0d0; /* Added border */
+  color: #666;
+  font-size: 18px; /* Increased from 16px */
+  cursor: pointer;
+  padding: 4px 8px; /* Increased padding */
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-weight: 700; /* Made bolder */
+}
+
+.deleteTileButton:hover {
+  background-color: #E34A3E; /* Changed to brand color */
+  color: #fff;
+  border-color: #E34A3E;
+}
+
+.padTileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Increased from 4px */
+}
+
+.searchTypeCompact {
+  font-size: 12px; /* Increased from 11px */
+  font-weight: 700; /* Increased from 500 */
+  color: #E34A3E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.searchCriteriaCompact {
+  font-size: 13px; /* Increased from 12px */
+  color: #1a1a1a; /* Already dark, kept */
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500; /* Added weight */
+}
+
+.saveTimeCompact {
+  font-size: 11px; /* Increased from 10px */
+  color: #555; /* Darker - was #999 */
+  margin-top: 2px;
+  font-weight: 500; /* Added weight */
+}
+
+/* Right Panel - IMPROVED CONTRAST */
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.detailSection {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid #d0d0d0; /* Added border */
+}
+
+.detailHeader {
+  padding: 12px; /* Increased from 10px */
+  background-color: #f0f0f0; /* Darker - was #f5f5f5 */
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid #c0c0c0; /* Darker and thicker */
+  flex-shrink: 0;
+}
+
+.detailTitle {
+  font-size: 17px; /* Increased from 16px */
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #333 */
+  margin: 0;
+}
+
+/* Context Card - IMPROVED READABILITY */
+.contextCard {
+  margin: 16px 16px 0 16px;
+  background-color: #f5f5f5; /* Slightly darker - was #f8f8f8 */
+  border: 2px solid #c0c0c0; /* Thicker and darker - was 1px #eee */
+  border-radius: 6px;
+  padding: 14px; /* Increased from 12px */
+  flex-shrink: 0;
+}
+
+.contextTitle {
+  font-size: 15px; /* Increased from 14px */
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #333 */
+  margin: 0 0 10px 0;
+}
+
+.contextGrid {
+  display: flex;
+  gap: 1.2rem; /* Increased spacing */
+}
+
+.contextItem {
+  font-size: 13px; /* Increased from 12px */
+  color: #333; /* Darker - was #666 */
+  line-height: 1.5;
+  font-weight: 500; /* Added weight */
+}
+
+.contextItem strong {
+  color: #E34A3E;
+  font-weight: 700; /* Increased from 500 */
+}
+
+/* Table Section - IMPROVED BORDERS */
+.tableSection {
+  flex: 1;
+  margin: 16px;
+  border: 2px solid #c0c0c0; /* Thicker and darker - was 1px #eee */
+  border-radius: 6px;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* Custom Scrollbar for Table Section */
+.tableSection::-webkit-scrollbar {
+  width: 10px; /* Increased from 8px */
+  height: 10px;
+}
+
+.tableSection::-webkit-scrollbar-track {
+  background: #e8e8e8; /* Darker - was #f1f1f1 */
+  border-radius: 5px;
+}
+
+.tableSection::-webkit-scrollbar-thumb {
+  background: #E34A3E;
+  border-radius: 5px;
+}
+
+.tableSection::-webkit-scrollbar-thumb:hover {
+  background: #c9352b;
+}
+
+/* Empty States - IMPROVED VISIBILITY */
+.emptyState {
+  padding: 40px 16px;
+  text-align: center;
+  color: #555; /* Darker - was #999 */
+}
+
+.emptyTitle {
+  font-size: 15px; /* Increased from 14px */
+  font-weight: 700; /* Increased from 600 */
+  color: #333; /* Darker - was #666 */
+  margin-bottom: 6px;
+}
+
+.emptyDescription {
+  font-size: 13px; /* Increased from 12px */
+  line-height: 1.5;
+  color: #555; /* Darker - was default */
+  font-weight: 500; /* Added weight */
+}
+
+.noSelectionState {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #555; /* Darker - was #999 */
+  border: 1px solid #d0d0d0; /* Added border */
+}
+
+.noSelectionTitle {
+  font-size: 20px; /* Increased from 18px */
+  font-weight: 700; /* Increased from 600 */
+  color: #1a1a1a; /* Darker - was #363636 */
+  margin-bottom: 10px;
+}
+
+.noSelectionDescription {
+  font-size: 15px; /* Increased from 14px */
+  line-height: 1.6;
+  max-width: 300px;
+  color: #444; /* Darker */
+  font-weight: 500; /* Added weight */
+}
+
+/* Help Button - Fixed Position */
+.helpButton {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  background: #E34A3E;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(227, 74, 62, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.helpButton:hover {
+  background: #c9352b;
+  box-shadow: 0 6px 20px rgba(227, 74, 62, 0.45);
+  transform: translateY(-2px);
+}
+
+.helpButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 12px rgba(227, 74, 62, 0.3);
+}
+
+.helpIcon {
+  background: white;
+  color: #E34A3E;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.helpText {
+  letter-spacing: 0.3px;
+}
+
+/* Responsive adjustments for help button */
+@media (max-width: 768px) {
+  .helpButton {
+    bottom: 90px;
+    right: 15px;
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  
+  .helpIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpButton {
+    bottom: 70px;
+    right: 10px;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Focus state for accessibility */
+.helpButton:focus-visible {
+  outline: 3px solid #E34A3E;
+  outline-offset: 3px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .mainContent {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .metadataWidget {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .leftPanel {
+    order: 2;
+    max-height: 300px;
+  }
+  
+  .rightPanel {
+    order: 1;
+  }
+  
+  .container {
+    padding: 12px;
+  }
+  
+  .metadataWidget {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .padTile {
+    padding: 10px;
+    min-height: 75px;
+  }
+  
+  .metadataWidget {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .metaItem {
+    min-width: auto;
+  }
+}

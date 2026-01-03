@@ -1,0 +1,51 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align children to the start (left) of the container */
+  padding: 7px 30px 0px 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  margin-left:130px;
+  background-color: transparent;
+  display:inline-block;/* No fill color */
+  border: 1px solid #E34A3E; /* Apply border color and width */
+  border-top: none; /* Removes the top border */
+  border-radius: 40px; /* Specific border radius */
+  border-top-left-radius: 0; /* Removes the curve on the top-left corner */
+  border-top-right-radius: 0;
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px; /* Space above the line */
+}
+
+.textButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: 'Palatino';
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  text-align: center;
+  color:white;
+
+  &:hover {
+    text-decoration: underline; /* Subtle hover effect */
+  }
+}
+
+.divider {
+  color:white;
+  font-size: 16px;
+}
+
+.rectangle {
+
+}

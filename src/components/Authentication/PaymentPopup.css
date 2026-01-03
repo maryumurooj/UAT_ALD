@@ -1,0 +1,79 @@
+.custom-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .custom-popup-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  
+  .custom-popup-logo {
+    max-width: 120px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .contact-info .text {
+    font-size: 14px;
+  }
+  
+  .custom-popup-buttons {
+    margin-top: 20px;
+  }
+  
+  .contact-btn,
+  .continue-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .contact-btn:hover,
+  .continue-btn:hover {
+    background-color: #005f73;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: red;
+  }
+  

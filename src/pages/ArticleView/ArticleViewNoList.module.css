@@ -1,0 +1,41 @@
+.AVNLcontainer {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  overflow: hidden; /* Hide overflow */
+}
+
+.AVNLcol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+}
+
+.AVNLbox {
+  background-color: black;
+  height: 100%; /* Full height of container */
+  width: 100%; /* Full width of container */
+  overflow: auto; /* Allow scrolling if content overflows */
+  border: 2px solid #e24603;
+  display: flex;
+  justify-content: center; /* Center PDF horizontally */
+  align-items: center; /* Center PDF vertically */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Ensure PDF fits within the container */
+.AVNLbox iframe, .AVNLbox embed {
+  width: 100%; /* Full width of container */
+  height: 100%; /* Full height of container */
+  border: none; /* Remove default border */
+}

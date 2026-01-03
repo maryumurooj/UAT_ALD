@@ -1,0 +1,317 @@
+
+/* Keyframe animations */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Main container */
+.container {
+  background: 
+    linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(139, 0, 0, 0) 50%, rgba(0,0,0,0.9) 100%),
+    url("../assets/bookcase.jpg"); 
+     background-size: cover;
+  background-position: center, top left;
+  background-attachment: fixed, scroll;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  padding: 2rem 0 0;
+  margin: 0;
+  overflow: hidden scroll;
+}
+
+.innerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  
+}
+
+/* Glass effect cards */
+.glassCard {
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 0.5px solid rgba(255, 255, 255, 0.304);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glassCardHover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* Header section */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: rgba(59, 1, 1, 0.15);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 4rem 2rem;
+  box-shadow: 0 15px 50px rgba(139, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.headerGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  position: relative;
+  z-index: 2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #f0f0f0;
+  position: relative;
+  z-index: 2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Section titles */
+.sectionTitle {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.iconWrapper {
+  background: linear-gradient(135deg, #dc2626, #7f1d1d);
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+/* Timeline styles */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 2.5rem;
+  border-left: 3px solid rgba(220, 38, 38, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timelineYear {
+  position: absolute;
+  left: -1rem;
+  top: 1rem;
+  background: linear-gradient(135deg, #dc2626, #7f1d1d);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.timelineContent {
+  margin-top: 2.5rem;
+  color: #f0f0f0;
+}
+
+/* Grid layouts */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.publicationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Feature cards */
+.featureCard {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCardHover {
+  background: rgba(139, 0, 0, 0.1);
+  transform: translateY(-3px);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.featureTitle {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Publication cards */
+.publicationCard {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 4px solid #dc2626;
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Team cards */
+.teamCard {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.teamName {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.teamRole {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+/* Highlight section */
+.highlight {
+  background: rgba(139, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  color: #f0f0f0;
+  box-shadow: 0 8px 25px rgba(139, 0, 0, 0.2);
+}
+
+/* Text styles */
+.strong {
+  color: #ffffff;
+}
+
+.cardText {
+  color: #e0e0e0;
+}
+
+.sectionText {
+  color: #f0f0f0;
+  margin-bottom: 1.5rem;
+}
+
+.sectionText:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .innerContainer {
+    padding: 1rem;
+  }
+  
+  .glassCard {
+    padding: 1.5rem;
+  }
+  
+  .header {
+    padding: 2rem 1rem;
+  }
+  
+  .featuresGrid,
+  .publicationsGrid,
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

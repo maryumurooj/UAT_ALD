@@ -1,0 +1,173 @@
+/* Container for the entire dashboard */
+.dashboardContainer {
+  display: flex;
+  background-color: black; /* Set the background color of the entire page to black */
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: black;
+  color: white;
+  transition: width 0.3s ease;
+  margin:0 10px 0 10px;
+}
+
+.sidebarOpen {
+  width: 200px;
+}
+
+.sidebarClosed {
+  width: 55px;
+}
+
+.menuButton {
+  color: white !important;
+  margin: 10px !important;
+  display: block !important;
+}
+
+.listItem {
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Abhaya Libre";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.listItem:hover {
+  background-color: #63636375;
+  border-radius: 10px;
+  filter: brightness(2);
+}
+
+.listItemActive {
+  background-color: #ffffff;
+  border-radius: 10px;
+  color: black;
+}
+
+.listItemText {
+  margin-left: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}
+
+/* Main content area */
+.mainContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1px;
+  color: white; /* Set the text color to white for contrast */
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* Admin section header */
+.admin {
+  padding-bottom: 55px;
+  color: white;
+  font-size: 30px;
+}
+
+.admin div {
+  font-size: 30px;
+  font-weight: 20;
+  font-family: "Abhaya Libre";
+  text-align: center; /* Center align the text */
+  color: #ffffff; /* Change to your desired color (example: a shade of orange) */
+}
+
+/* Form container */
+.formContainer {
+  position: relative;
+  width: 95%;
+  margin-right: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+  border: 1px solid #d14900;
+  box-shadow: 0px 0px 10px #d14900;
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    flex-direction: column;
+    min-height: 95dvh;
+    padding: 10px;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    min-height: 70px;
+    padding: 0;
+  }
+
+  .menuButton {
+    display: none !important;
+  }
+
+  .listItem {
+    padding: 10px;
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .listItemText {
+    display: none !important;
+  }
+
+  /* Make the List horizontal */
+  .sidebar > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+  }
+
+  .mainContent {
+    flex: 1;
+    height: calc(100% - 70px);
+  }
+
+  .formContainer {
+    margin: 0;
+    min-height: 75dvh;
+    border-radius: 0;
+  }
+}
+
+.syncMessage{
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Rest of your existing styles */

@@ -1,0 +1,269 @@
+/* Header.module.css */
+.headerComponent {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  padding: 1vh 2vw; /* Adjusted padding */
+  justify-content: space-between;
+  z-index: 6000;
+  height: 6vh; /* Ensure proper height scaling */
+}
+
+/* Profile Container */
+.pfpusername {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 0.5rem 0.1rem 1rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  gap: 0.75rem;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.pfpusername:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.pfpusername:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Username Text */
+.displayname {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  flex: 1;
+  transition: color 0.3s ease;
+}
+
+.pfpusername:hover .displayname {
+  color: white;
+}
+
+/* Profile Picture */
+.iconpic {
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.pfpusername:hover .iconpic {
+  border-color: rgba(255, 111, 97, 0.8);
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255, 111, 97, 0.3);
+}
+
+
+/* Subscription Badge */
+.subscriptionBadge {
+  background: linear-gradient(135deg, #ff6f61 0%, #ff3e2d 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(255, 111, 97, 0.3);
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse 2s infinite;
+  display: flex;
+  align-items: center;
+}
+.subscriptionBadge {
+  background-color: #ff6f61; /* Highlight color; adjust as needed */
+  color: white;
+  border-radius: 9999px; /* Creates the ellipse/pill shape */
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 1rem; /* Adds more spacing between the badge and the display name */
+  transition: transform 0.2s ease, max-height 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Optional: Add a subtle shine effect */
+.pfpusername::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  transition: all 0.6s ease;
+}
+
+.pfpusername:hover::before {
+  left: 50%;
+}
+
+
+
+.displayname {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.567);
+  gap: 1rem; /* Increased spacing between the badge and username */
+  transition: transform 0.2s ease, max-height 0.3s ease;
+
+  &:hover{
+    cursor: pointer;
+   
+ }
+}
+
+
+
+
+.titlelogo {
+  flex-shrink: 0;
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.titlelogo:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.logoImage {
+  height: 5vh; /* Scales with viewport height */
+}
+
+.titleImage {
+  height: 3.5vh; /* Adjusts proportionally */
+}
+
+.headerComponentInner {
+  flex-grow: 1;
+  max-width: 45%; /* Maintain relative width */
+  min-width: 0;
+}
+
+.loginButton {
+  padding: 0.7vh 2vw; /* Adjusted padding */
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem; /* Use rem for font size */
+  font-family: 'Abhaya Libre', serif;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.5vw; /* Adjusted margin */
+  transition: transform 0.2s;
+}
+
+.loginButton:hover {
+  color: red;
+}
+
+.loginButton:active {
+  transform: scale(0.95);
+}
+
+.profilePicture {
+  width: 5vh; /* Scales with height */
+  border-radius: 50%;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none; /* Hide desktop-specific content */
+  }
+
+  .mobileOnly {
+    display: block; /* Show mobile-specific content */
+  }
+
+  .profilebutton {
+    display: none;
+  }
+
+  .Ham {
+    position: absolute;
+    top: 2vh; /* Adjusted positioning */
+    right: 2vw;
+  }
+
+  .headerComponentInner {
+    width: 25%; /* Adjust width for mobile screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headerComponent {
+    flex-direction: row; /* Maintain layout consistency */
+  }
+
+  .titlelogo {
+    
+    display: flex;
+    align-items: center;
+    gap: 1vw; /* Adjusted gap for smaller screens */
+  }
+
+  .logoImage {
+    height: 6vh; /* Scales with viewport height */
+  }
+
+  .titleImage {
+    display: none; /* Hide title image on mobile */
+  }
+}
+
+/* Optional: Adjust Ham Component for Mobile Full Width */
+@media (max-width: 480px) {
+  .Ham {
+    width: 100vw; /* Full-width for extra-small devices */
+  }
+}
+
+@media (max-width: 1200px) {
+  .subscriptionBadge, .displayname{
+    display: none;
+  }
+
+  .pfpusername{
+    justify-content: center;
+    min-width: 0;
+    padding: 0;
+  }
+
+  
+
+
+  
+}
+

@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+  /* Ensure positioning context for pseudo-element */
+}
+
+.leftSection,
+.rightSection {
+  flex: 1;
+  margin: 0 10px;
+  /* Adjust spacing between the sections */
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: 50%;
+  height: 71.5vh;
+  border-right: 2px solid #ddd;
+  /* Adjust the color and thickness of the line as needed */
+  transform: translateX(50%);
+}
+
+.scrollableText {
+  overflow-y: auto;
+  padding-top: 10px;
+  /* Add padding to push rows down */
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeInUp 0.3s ease-in-out;
+}
+.statusItem h4 {
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+  display: inline; /* Keeps them aligned naturally */
+}
+
+.statusItem:last-child {
+  border-bottom: none;
+  /* Remove border for the last item */
+}
+
+.statusItem h3,
+.statusItem p {
+  margin: 0;
+}
+
+.highlight {
+  background-color: yellow;
+  /* Adjust highlight color as needed */
+}
+
+.referredInItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fadeInUp 0.3s ease-in-out;
+}
+.referredInItem h4 {
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+  display: inline; /* Keeps them aligned naturally */
+}
+
+.referredInItem:last-child {
+  border-bottom: none;
+}
+
+.referredInItem h3,
+.referredInItem p {
+  margin: 0;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

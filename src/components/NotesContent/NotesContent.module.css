@@ -1,0 +1,48 @@
+.scrollableText {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered {
+    text-align: center;
+    
+}
+
+.notesArea {
+    width: 60vw;
+    height:50vh;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: #e0e0e0; /* Light grey base */
+    box-shadow: 5px 5px 10px #b0b0b0, -5px -5px 10px #ffffff; /* Soft Neomorphic effect */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Neomorphic Pressed Effect when Focused */
+.notesArea:focus {
+    box-shadow: inset 5px 5px 10px #b0b0b0, inset -5px -5px 10px #ffffff;
+}
+
+.saveButton {
+    background: #E34A3E;
+    border: none;
+    color: #ffffff;
+    padding: 0.3rem 1rem; /* Reduced padding */
+    font-size: 0.9rem; /* Reduced font size */
+    border-radius: 0.8rem; /* Reduced border radius */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  
+  .saveButton:hover {
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px); /* Slightly less movement */
+  }

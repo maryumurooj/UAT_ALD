@@ -1,0 +1,379 @@
+/* Page Wrapper with Background */
+.termspagewrapper {
+  background: 
+  linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(139, 0, 0, 0) 50%, rgba(0,0,0,0.9) 100%),
+  url("../assets/bookcase.jpg"); 
+   background-size: cover;  
+  position: relative;
+  padding: 2rem 0 0;
+  box-sizing: border-box;
+  overflow: hidden scroll;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Background Overlay for better readability */
+.termsbackgroundoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+/* Main Container */
+.termscontainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Slide in animation */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Section */
+.termsheader {
+  padding: 3rem 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.termsheader::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4444, #cc0000);
+  border-radius: 1px;
+}
+
+/* Main Title */
+.termstitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Subtitle */
+.termssubtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+}
+
+/* Intro Paragraph */
+.termsintro {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Content Area */
+.termscontent {
+  padding: 0 3rem 2rem;
+}
+
+/* Individual Term Sections */
+.termssection {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.termssection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff4444, #cc0000);
+  border-radius: 0 2px 2px 0;
+}
+
+.termssection:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 68, 68, 0.3);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(255, 68, 68, 0.1);
+}
+
+/* Section Numbers */
+.sectionnumber {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(252, 63, 0, 0.244);
+  line-height: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Section Titles */
+.sectiontitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.01em;
+}
+
+/* Section Text */
+.sectiontext {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+  text-align: justify;
+}
+
+/* Footer Section */
+.termsfooter {
+  padding: 2rem 3rem 3rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.agreementtext {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  border-radius: 12px;
+}
+
+.lastupdated {
+  
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.lastupdated small {
+  display: inline;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .termscontainer {
+    margin: 0 1rem;
+  }
+  
+  .termsheader,
+  .termscontent,
+  .termsfooter {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .termstitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .termspagewrapper {
+    padding: 1rem 0.5rem;
+  }
+  
+  .termsheader,
+  .termscontent,
+  .termsfooter {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .termsheader {
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .termstitle {
+    font-size: 2rem;
+  }
+  
+  .termssubtitle {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .termsintro {
+    font-size: 1rem;
+  }
+  
+  .termssection {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sectionnumber {
+    font-size: 3rem;
+    top: -5px;
+    right: 15px;
+  }
+  
+  .sectiontitle {
+    font-size: 1.3rem;
+  }
+  
+  .sectiontext {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .termspagewrapper {
+    padding: 0.5rem;
+  }
+  
+  .termscontainer {
+    border-radius: 16px;
+  }
+  
+  .termsheader,
+  .termscontent,
+  .termsfooter {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .termsheader {
+    padding-top: 1.5rem;
+  }
+  
+  .termstitle {
+    font-size: 1.75rem;
+  }
+  
+  .termssubtitle {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .termssection {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .sectionnumber {
+    display: none;
+  }
+  
+  .sectiontitle {
+    font-size: 1.2rem;
+  }
+  
+  .sectiontext {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .agreementtext {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .termscontainer {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .termssection {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .sectiontext,
+  .termsintro {
+    color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .termscontainer {
+    animation: none;
+  }
+  
+  .termspagewrapper {
+    animation: none;
+  }
+  
+  .termssection {
+    transition: none;
+  }
+  
+  .termssection:hover {
+    transform: none;
+  }
+}

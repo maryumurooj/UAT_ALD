@@ -1,0 +1,80 @@
+.popupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Slightly dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .authPopup {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    width: 350px; /* Smaller width for the pop-up */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .inputField {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .button {
+    background-color: #dc3a04;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #a800;
+  }
+  
+  .googleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #4285F4;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .googleBtn img {
+    width: 20px;
+  }
+  
+  .switchAuth {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .switchAuth:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,237 @@
+/* Styles for the subcontainer */
+.subcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+}
+
+/* Styles for individual subitems */
+.subitem {
+  width: 50vw; /* Adjusts dynamically with screen size */
+  font-family: 'Palatino', serif;
+  font-size: 1.2vw; /* Scales with viewport width */
+  height: auto; /* Flexible height */
+  line-height: 0.5;
+  font-weight: 600;
+  color: #E34A3E;
+  position: relative;
+  
+  height: auto; /* Allow flexible height */
+  display: flex;
+  left: 5%;
+  justify-content: space-around;
+  align-items: space-around;
+  margin-top: 0.5em; /* Relative margin */
+  z-index: 2;
+}
+
+.subitem button {
+  border: none;
+  border-radius: 50%; /* Circular button */
+  background-color: #E34A3E; /* Red background */
+  color: white;
+  width: 1.2em; /* Adjust size */
+  height: 1.2em; /* Adjust size */
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  margin-left: 0.5em;
+
+  /* Neumorphic shadow for normal state */
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7), -4px -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subitem button:hover {
+  background-color: #C9332D;
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.9), -4px -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles for the main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: 80%; /* Dynamic width */
+  max-width: 1200px; /* Limit size on large monitors */
+  height: auto; /* Allow flexible height */
+  margin: auto;
+  top: 10%;
+  transform: translateY(-50%);
+}
+
+/* Styles for search input */
+.searchInput {
+  width: 95%; /* Dynamic width */
+  padding: 0.36em; /* Relative padding */
+  background: #ffff;
+  border-radius: 0.75em;
+  border: none;
+  box-shadow: inset 2px 2px 5px #d1d1d1, inset -2px -2px 5px #ffffff;
+  color: #333;
+  font-size: 0.89rem;
+  outline: none;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: #e9e9e9;
+  border-radius: 2rem;
+  border: 2px solid #e9e9e9;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15), -3px -3px 3px rgba(255, 255, 255, 0.6);
+  width: 16.5vw; /* Responsive width */
+  padding: 0.3rem;
+  margin-left: 1vw; /* Adjusted margin for better spacing */
+  margin-top: 0;
+  height: auto;
+  max-height: 65vh; /* Relative to viewport */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 0.3rem;
+  background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(185, 185, 185, 0.5);
+  border-radius: 1rem;
+}
+
+/* CombinedResults styles */
+.combinedResults {
+  border: 1px solid #d1d1d1;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  height: 17vh; /* Dynamic height */
+  overflow-y: auto;
+  padding: 0.5em;
+  width: 100%; /* Dynamic width */
+  margin-left:10%;
+  background: #e0e0e0;
+  border-radius: 0.5em;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.8);
+  &::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent; /* Makes scrollbar background transparent */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Initially make thumb transparent */
+    border-radius: 10px; /* Rounded corners for the thumb */
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(145, 145, 145, 0.5); /* Visible on hover with transparency */
+  }
+}
+
+.combinedResults h3 {
+  font-family: 'Palatino', serif;
+  font-weight: 600;
+  color: #B22525;
+  text-align: center;
+  margin-bottom: 1em;
+  background: #ffffff;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Styles for added items */
+.addedItem {
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  background-color: #f0f0f0;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 0.5em;
+}
+
+.addedItem button {
+  border: none;
+  border-radius: 50%;
+  background-color: #E34A3E;
+  color: white;
+  width: 1.5em;
+  height: 1.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7), -4px -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.addedItem button:hover {
+  background-color: #C9332D;
+  box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.9), -4px -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Filter container styles */
+.filtercontainer {
+  border-radius: 1em 1em 0 0;
+  width: 90%; /* Dynamic width */
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0;
+  margin: 1em 0;
+}
+
+/* Bottom items styles */
+.BottomItems {
+  font-family: 'Palatino', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #E34A3E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+/* Button styles */
+.Searchbutton,
+.Clearbutton {
+  background: #E34A3E;
+  border: none;
+  color: #ffffff;
+  padding: 0.3rem 1rem; /* Reduced padding */
+  font-size: 0.9rem; /* Reduced font size */
+  border-radius: 0.8rem; /* Reduced border radius */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Searchbutton:hover,
+.Clearbutton:hover {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px); /* Slightly less movement */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container,
+  .sidebar,
+  .combinedResults {
+    width: 95%;
+  }
+
+  .subcontainer {
+    width: 95%;
+  }
+}

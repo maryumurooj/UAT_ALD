@@ -1,0 +1,143 @@
+/* General container styling */
+.formwrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+
+}
+
+.formcontainer {
+
+  margin: auto;
+  background: #f9f9f9;
+  padding: 0px 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  border: 1px solid #ddd;
+  flex-direction: column;
+  min-width: 80%;
+}
+::-webkit-scrollbar{
+  width: 5px;
+  color: rgba(0, 0, 0, 0.379);
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgba(0, 0, 0, 0.342);
+}
+::-webkit-scrollbar-track{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(0, 0, 0, 0.723);
+}
+::-webkit-scrollbar-thumb:active{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+::-webkit-scrollbar-thumb:vertical{
+  background-color: rgba(0, 0, 0, 0.316);
+}
+
+.searchInput{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Form elements styling */
+form {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+form label {
+  font-weight: bold;
+  font-size: small;
+}
+
+form input,
+form select {
+width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  height: 40px; /* Reduced height */
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #dc3a04;
+    border: none;
+    border-radius: 5px;
+padding: 10px;
+font-size: medium;
+color: white;
+}
+
+form button:hover {
+  background-color: #000000;
+}
+
+/* Table styling */
+.bookList {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bookList th{
+  font-size: smaller;
+}
+.bookList th,
+.bookList td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.bookList th {
+  background: grey;
+  color: white;
+}
+
+.bookList tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.bookList button {
+  background: #28a745;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookList button:hover {
+  background: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .formcontainer {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .bookList th,
+  .bookList td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,55 @@
+.subFooterFrame {
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px; /* Reduced vertical padding */
+  box-sizing: border-box;
+  position: relative; /* Change to absolute */
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.horizontalLine {
+  width: 90%;
+  border: none;
+  height: 0.5px;
+  background-color: #ffffff58;
+  margin-top: 0px; /* Reduce margin above the line */
+  margin-bottom: 5px; /* Reduce margin below the line */
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.textContent, .contactInfo {
+  cursor: default;
+  color: #a0a0a0;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 12px; /* Optionally reduce the font size if needed */
+}
+
+.icon {
+  width: 12px; /* Reduce icon size to decrease height */
+  margin-right: 8px; /* Adjust spacing between icon and text */
+}
+
+.text {
+  white-space: nowrap;
+}
+
+
+@media (max-width: 1024px) {
+   .contactInfo{
+    display: none;
+  }
+}

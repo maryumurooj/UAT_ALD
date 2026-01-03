@@ -1,0 +1,7 @@
+.CaseInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100vw; /* Correction from 'widows' to 'width' */
+    min-height: 100vh; /* Ensures the App container fills the viewport height */
+    position: relative; /* Required for absolute positioning of the footer */
+}

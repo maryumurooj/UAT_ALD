@@ -1,0 +1,12 @@
+.equalsContainer {
+    display: block; /* Ensures items appear in a vertical list */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .equalsContainer p {
+    margin: 0;
+    padding: 0;
+    line-height: normal; /* Use default line height */
+  }
+  

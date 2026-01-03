@@ -1,0 +1,175 @@
+/* SidePanel.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f6f6f6;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff;
+  width: 14vw; /* Width adjusts based on viewport width */
+  margin: 0.5rem;
+  margin-top: 0.65rem;
+  box-shadow: inset 2px 2px 5px #d1d1d1, inset -2px -2px 5px #ffffff;
+  cursor: pointer;
+  justify-content: center;
+  transition: width 0.3s ease-in-out; /* Smooth transition for resizing */
+}
+
+.container:hover {
+  box-shadow: 2px 2px 15px #d1d1d1, -2px -2px 15px #ffffff;
+  transform: translateY(-3px);
+}
+
+.searchelement,
+.subitem,
+.item {
+  color: #E34A3E;
+  font-size: 1rem; /* Use rem for font size */
+  font-weight: 550;
+  height: 6vh; /* Relative height */
+  width: 100%;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5vh; /* Adjusted margin */
+}
+
+.collapsedRectangle,
+.expandedRectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #e9e9e9;
+  border-radius: 1.2rem;
+  box-shadow: inset 2px 2px 5px #c1c1c1, inset -2px -2px 5px #ffffff;
+  cursor: pointer;
+  transition: height 0.3s ease-in-out, box-shadow 0.2s;
+}
+
+.sidebar {
+  background: #e9e9e9;
+  border-radius: 2rem;
+  border: 2px solid #e9e9e9;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15), -3px -3px 3px rgba(255, 255, 255, 0.6);
+  width: 15vw; /* Responsive width */
+  padding: 1rem;
+  margin-left: 1vw; /* Responsive margin */
+  margin-top: 0;
+  transition: all 0.3s ease;
+  height: auto;
+  max-height: 62vh; /* Adjusted max height relative to viewport */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 0.3rem; /* Adjusted scrollbar width */
+  background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 1rem;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(185, 185, 185, 0.5);
+}
+
+.button button {
+  background: #E34A3E;
+  border: none;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem; /* Reduced padding */
+  font-size: 0.9rem; /* Reduced font size */
+  border-radius: 0.8rem; /* Reduced border radius */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin:0.5rem;
+}
+
+.clearButton {
+  background: #E34A3E;
+  border: none;
+  color: #ffffff;
+  padding: 0.3rem 1rem; /* Reduced padding */
+  font-size: 0.9rem; /* Reduced font size */
+  border-radius: 0.8rem; /* Reduced border radius */
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button button:hover {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px); /* Slightly less movement */
+}
+
+.clearButton:hover {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px); /* Slightly less movement */
+}
+
+
+.caseNoList {
+  max-height: 30vh; /* Adjusted height relative to viewport height */
+  width: 13vw; /* Responsive width */
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+  border-radius: 1.2rem;
+  box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+}
+
+.caseNoItem {
+  padding: 1rem;
+  font-size: 0.8rem;
+  background: #ffffff;
+  box-shadow: inset 2px 2px 5px #d1d1d1, inset -2px -2px 5px #ffffff;
+  transition: background 0.2s ease, color 0.2s ease;
+  color: #333;
+}
+
+.caseNoItem:hover {
+  background: #333;
+  color: #ffffff;
+}
+
+.caseNoList::-webkit-scrollbar {
+  width: 0.5rem;
+  background: #ffffff;
+}
+
+.caseNoList::-webkit-scrollbar-thumb {
+  background-color: rgba(51, 51, 51, 0.3);
+  border-radius: 1rem;
+}
+
+/* Media Queries for mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    width: 40vw; /* Adjusted for smaller screens */
+  }
+
+  .sidebar {
+    width: 60vw; /* Larger sidebar for mobile */
+    padding: 1rem; /* Less padding for mobile */
+  }
+
+  .searchelement,
+  .subitem,
+  .item {
+    font-size: 1.2rem; /* Increase font size for readability on mobile */
+    height: 8vh; /* Adjusted height for mobile */
+  }
+
+  .caseNoList {
+    width: 60vw; /* Adjust case list width */
+    max-height: 50vh; /* Adjust list height for mobile */
+  }
+}

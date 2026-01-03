@@ -1,0 +1,58 @@
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #000000;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 20px;
+  margin-bottom:30px;
+  margin-top:10px;
+  font-family: Palatino;
+}
+
+.title {
+  text-decoration: underline;
+  margin-top:30px;
+}
+
+
+
+.questionsContainer {
+  margin-top: 20px;
+}
+
+.question {
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.question:hover {
+  background-color: #f5f5f5;
+}
+
+.question h3 {
+  margin: 0;
+  /* Adding underline to the question */
+}
+
+.answer {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: max-height 0.5s ease;
+  max-height: auto;
+  overflow: hidden;
+  width: calc(100% - 22px); /* Adjusting width to account for borders and padding */
+}
+
+.question.clicked .answer {
+  max-height: 500px; /* Adjusted to ensure full display of answer */
+}

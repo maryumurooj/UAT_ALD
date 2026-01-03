@@ -1,0 +1,240 @@
+.navBarDefault {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 9px 10px 19.1px rgb(54, 52, 52);
+  height: 35px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: fit-content;
+  
+}
+
+.frame {
+  display: flex;
+  width: 100%; /* Ensure the frame takes full width of the navbar */
+  justify-content: space-evenly; /* Evenly distribute space among items */
+  
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight:700;
+  font-family: 'Abhaya Libre';
+  padding: 10px 10px; /* Sufficient padding for clickable area */
+  color: #333;
+  transition: color 0.3s, text-decoration-color 0.3s;
+  position: relative; /* Position relative for absolute positioning of dropdown */
+  /* Remove default focus outline */
+  &:focus {
+    outline: none;
+  }
+
+  /* Hover state adds an underline */
+  &:hover {
+   color: red /* Underline color */
+  }
+
+  /* Active state simulates the button being pressed */
+  &:active {
+    transform: scale(0.95); /* Scales down the button to give a "pressed" effect */
+  }
+}
+/* Existing CSS */
+
+
+/* Add new CSS for dropdown */
+/* Updated CSS for dropdown with minimal and modern design */
+
+.dropdownContent {
+  display: none; /* Hide dropdown content by default */
+  position: absolute; /* Position dropdown content fixed to the viewport */
+  top: 6%; /* Keep the top position as provided */
+  transform: translateX(1%); /* Center dropdown content horizontally */
+  background-color: #ffffff; /* Background color of dropdown */
+  min-width: 120px; /* Increase minimum width for better readability */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Update box shadow for subtle effect */
+  border-radius: 8px; /* Add border radius for a softer look */
+  z-index: 6001; /* Ensure dropdown appears above other content */
+  
+}
+
+.dropdownContent button {
+  display: block; /* Display dropdown buttons as block elements */
+  width: 100%; /* Set width to 100% */
+  padding: 12px 16px; /* Add padding to dropdown buttons */
+  text-align: left; /* Align text to the left */
+  color: #333; /* Text color */
+  border: none; /* Remove borders */
+  background-color: transparent; /* Transparent background */
+  transition: background-color 0.3s; /* Add transition effect */
+  font-family: 'Abhaya Libre';
+  font-size: 17px; /* Adjust font size for better readability */
+  font-weight:bold;
+}
+
+.dropdownContent button:hover {
+  background-color: #f3f3f3; /* Change background color on hover */
+  color: red; /* Change text color to red on hover */
+}
+
+
+/* Show dropdown content when hover over the dropdown button */
+.dropdown:hover .dropdownContent {
+  display: block; /* Show dropdown content on hover */
+}
+
+.active {
+  color: red; /* Active state color */
+}
+
+/* Existing CSS remains the same */
+
+/* Media Queries for Mobile Responsiveness */
+
+@media (max-width: 768px) {
+  .navBarDefault {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .frame {
+    width: 100%;
+  }
+
+  .navButton, .dropdown {
+    margin-bottom: 10px;
+  }
+
+  .dropdownContent {
+    position: relative;
+    top: 0;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .dropdownContent button {
+    padding: 10px;
+  }
+}
+
+/* Existing CSS remains the same until this point */
+
+/* Additions for Hamburger Menu */
+.hamburger {
+  display: none; /* Hidden on desktop */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 24px; /* Size of the hamburger menu icon */
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+.hamburger .close {
+  width: 20px;
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger .close + .bar {
+  opacity: 0;
+}
+.hamburger .close + .bar + .bar {
+  transform: rotate(-45deg) translate(5px, -5px);
+  width: 20px;
+}
+
+.navContent {
+  display: flex; /* Default for desktop */
+  transition: max-height 0.3s ease-out;
+  overflow: hidden; /* Hide content when not open on mobile */
+  max-height: 0; /* Initially closed on mobile */
+}
+
+.navContent.open {
+  max-height: 300px; /* Open on mobile when .open class is added */
+  flex-direction: column; /* Stack items vertically on mobile */
+  align-items: center;
+  padding: 20px 0;
+}
+
+.navContent button, .navContent .dropdown {
+  margin-bottom: 10px;
+}
+
+/* Media Queries for Mobile Responsiveness - Updated */
+@media (max-width: 768px) {
+  .navBarDefault {
+    padding: 10px; /* Optional: Add padding if needed */
+  }
+
+  .frame {
+    position: relative; /* For hamburger menu positioning */
+    width: 100%;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align to the left for mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger menu on mobile */
+  }
+
+  .navContent {
+    flex-direction: column; /* Stack navigation items vertically */
+    align-items: center; /* Center horizontally (optional, adjust as needed) */
+    background-color: #ffffff; /* Background color for the dropdown menu (optional) */
+    border-radius: 8px; /* Soften the corners (optional) */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow (optional) */
+  }
+
+  .navButton, .dropdown {
+    width: 100%; /* Full width for mobile navigation buttons */
+    text-align: left; /* Align text to the left */
+    padding: 12px 16px; /* Adjust padding for comfort on mobile */
+  }
+
+  .dropdownContent {
+    position: relative; /* Adjust positioning for mobile */
+    top: 0;
+    transform: none;
+    box-shadow: none;
+    background-color: transparent; /* If you added background to .navContent, adjust here */
+    padding: 0; /* Reset padding */
+  }
+
+  .dropdownContent button {
+    width: 100%; /* Full width for dropdown buttons on mobile */
+    padding: 10px; /* Adjust padding as needed */
+  }
+}
+
+@media (max-width: 1024px) {
+  .navContent{
+    padding: 0;
+  }
+  .navButton{
+    font-size: large;
+    font-weight: 550;
+    padding: 0;
+  }
+
+  .navBarDefault{
+    height: fit-content;
+  }
+}

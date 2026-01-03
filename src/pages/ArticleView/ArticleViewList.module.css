@@ -1,0 +1,22 @@
+.AVLrow{
+  display:flex;
+  justify-content:space-around;
+}
+.AVLcol{
+  display:inline-flexflex;
+  flex-direction:column;
+}
+.AVLlistbox{
+  width:520px;
+  border:1px solid #e24603;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  padding: 2em;
+  display: flex;
+  flex-direction:column;
+}
+.AVLbox{
+  height: 100vh;
+  overflow-y: scroll;
+}

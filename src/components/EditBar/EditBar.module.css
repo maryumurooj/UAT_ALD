@@ -1,0 +1,42 @@
+.sidebar {
+  background-color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center items vertically */
+  background-color: transparent; /* Example background color */
+  width: auto; /* Adjust width as needed */
+  height: auto; /* Full height of the viewport */
+  /* Align to the right side of the viewport */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  border-radius:20px 0 0 20px;
+  border-right: none;
+    border-left: 1px solid #e34a3e;
+   border-top: 1px solid #e34a3e;
+  border-bottom: 1px solid #e34a3e;
+  margin-right:10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 24px; /* Larger font size for visibility */
+  cursor: pointer;
+  padding: 10px;
+}
+
+.divider {
+  width: 1px; /* Thin vertical line */
+  height: 18px; /* Adjust based on space between items */
+  background-color: #ccc; /* Divider color */
+  rotate:90deg;
+}
+
+

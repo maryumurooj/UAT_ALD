@@ -1,0 +1,116 @@
+.fullcontainer {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+  border: 2px solid black;
+  border-radius: 30px;
+  margin: 0 auto;
+  /* Center horizontally */
+  width: 75%;
+  position: relative;
+  /* Ensure relative positioning */
+}
+
+.topframe {
+  justify-content: center;
+  max-height: 100px;
+}
+
+.textStyles {
+  font-family: Palatino, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+  width: 95%;
+  /* Adjust the width as needed */
+  max-height: 190px;
+  ;
+  /* Limit height for scrolling */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  text-align: auto;
+  /* Ensure text alignment is left */
+  margin-left: 30px;
+
+}
+
+.pageCounter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.pageInfo {
+  margin: 0 10px;
+}
+
+.currentPage {
+  font-weight: bold;
+  color: black;
+  padding: 2px 5px;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.arrow:hover {
+  background-color: #f0f0f0;
+}
+
+.bottomframe {
+  border-top: 2px solid black;
+  margin-top: 20px;
+  max-height: 100px;
+
+  .scrollableContent {
+    overflow-y: scroll;
+    max-height: 150px;
+  }
+
+}
+
+/* Common styles for scrollable content */
+.scrollableContent {
+  font-family: Palatino, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  width: 95%;
+  padding: 5px;
+  background-color: #ffffffd9; /* Semi-transparent white background */
+  overflow: hidden; /* Hide scrollbars by default */
+  position: relative;
+}
+
+/* Scrollbars for WebKit browsers */
+.scrollableContent::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent; /* Transparent scrollbar background */
+}
+
+.scrollableContent::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Initially transparent thumb */
+  border-radius: 10px; /* Rounded corners for thumb */
+}
+
+.scrollableContent:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(145, 145, 145, 0.5); /* Thumb visible on hover */
+}
+
+.scrollableContent:hover {
+  overflow-y: auto; /* Show scrollbar on hover */
+}

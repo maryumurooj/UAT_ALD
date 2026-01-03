@@ -1,0 +1,149 @@
+const stateCityDistrictMap = {
+  "Andhra Pradesh": {
+    cities: ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Nellore"],
+    districts: ["Visakhapatnam", "Krishna", "Guntur", "Chittoor", "Nellore"],
+  },
+  "Arunachal Pradesh": {
+    cities: ["Itanagar", "Naharlagun", "Pasighat", "Tezpur", "Ziro"],
+    districts: [
+      "Itanagar",
+      "Pasighat",
+      "Lower Subansiri",
+      "West Kameng",
+      "Papum Pare",
+    ],
+  },
+  Assam: {
+    cities: ["Guwahati", "Dibrugarh", "Silchar", "Nagaon", "Tezpur"],
+    districts: ["Guwahati", "Dibrugarh", "Tinsukia", "Nagaon", "Karimganj"],
+  },
+  Bihar: {
+    cities: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga"],
+    districts: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga"],
+  },
+  Chhattisgarh: {
+    cities: ["Raipur", "Bhilai", "Durg", "Bilaspur", "Korba"],
+    districts: ["Raipur", "Durg", "Bilaspur", "Korba", "Rajnandgaon"],
+  },
+  Goa: {
+    cities: ["Panaji", "Margao", "Mapusa", "Ponda", "Verna"],
+    districts: ["North Goa", "South Goa"],
+  },
+  Gujarat: {
+    cities: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
+    districts: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"],
+  },
+  Haryana: {
+    cities: ["Gurugram", "Faridabad", "Hisar", "Rohtak", "Ambala"],
+    districts: ["Gurugram", "Faridabad", "Hisar", "Rohtak", "Ambala"],
+  },
+  "Himachal Pradesh": {
+    cities: ["Shimla", "Dharamshala", "Kullu", "Manali", "Solan"],
+    districts: ["Shimla", "Kullu", "Mandi", "Solan", "Dharamshala"],
+  },
+  Jharkhand: {
+    cities: ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar"],
+    districts: ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar"],
+  },
+  Karnataka: {
+    cities: ["Bengaluru", "Mysuru", "Mangalore", "Hubli", "Belgaum"],
+    districts: ["Bengaluru", "Mysuru", "Mangalore", "Hubli", "Belgaum"],
+  },
+  Kerala: {
+    cities: [
+      "Thiruvananthapuram",
+      "Kochi",
+      "Kozhikode",
+      "Kollam",
+      "Malappuram",
+    ],
+    districts: [
+      "Thiruvananthapuram",
+      "Kochi",
+      "Kozhikode",
+      "Kollam",
+      "Malappuram",
+    ],
+  },
+  "Madhya Pradesh": {
+    cities: ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain"],
+    districts: ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain"],
+  },
+  Maharashtra: {
+    cities: ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"],
+    districts: ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"],
+  },
+  Manipur: {
+    cities: ["Imphal", "Thoubal", "Kakching", "Churachandpur", "Ukhrul"],
+    districts: [
+      "Imphal East",
+      "Imphal West",
+      "Thoubal",
+      "Churachandpur",
+      "Kakching",
+    ],
+  },
+  Meghalaya: {
+    cities: ["Shillong", "Tura", "Jowai", "Nongstoin", "Bhoi"],
+    districts: [
+      "East Khasi Hills",
+      "West Khasi Hills",
+      "Jaintia Hills",
+      "Garo Hills",
+    ],
+  },
+  Mizoram: {
+    cities: ["Aizawl", "Lunglei", "Saiha", "Kolasib", "Champhai"],
+    districts: ["Aizawl", "Lunglei", "Saiha", "Kolasib", "Champhai"],
+  },
+  Nagaland: {
+    cities: ["Kohima", "Dimapur", "Mokokchung", "Tuensang", "Wokha"],
+    districts: ["Kohima", "Dimapur", "Mokokchung", "Tuensang", "Wokha"],
+  },
+  Odisha: {
+    cities: ["Bhubaneswar", "Cuttack", "Sambalpur", "Rourkela", "Berhampur"],
+    districts: ["Khordha", "Cuttack", "Sambalpur", "Ganjam", "Balasore"],
+  },
+  Punjab: {
+    cities: ["Chandigarh", "Amritsar", "Ludhiana", "Jalandhar", "Patiala"],
+    districts: ["Amritsar", "Ludhiana", "Jalandhar", "Patiala", "Mohali"],
+  },
+  Rajasthan: {
+    cities: ["Jaipur", "Udaipur", "Jodhpur", "Ajmer", "Bikaner"],
+    districts: ["Jaipur", "Udaipur", "Jodhpur", "Ajmer", "Bikaner"],
+  },
+  Sikkim: {
+    cities: ["Gangtok", "Namchi", "Pakyong", "Gyalshing", "Mangan"],
+    districts: ["East Sikkim", "West Sikkim", "South Sikkim", "North Sikkim"],
+  },
+  "Tamil Nadu": {
+    cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
+    districts: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"],
+  },
+  Telangana: {
+    cities: ["Hyderabad", "Warangal", "Khammam", "Nizamabad", "Rangareddy"],
+    districts: ["Hyderabad", "Warangal", "Khammam", "Nizamabad", "Rangareddy"],
+  },
+  Tripura: {
+    cities: ["Agartala", "Belonia", "Dharmanagar", "Udaipur", "Kailashahar"],
+    districts: ["West Tripura", "South Tripura", "Dhalai", "North Tripura"],
+  },
+  "Uttar Pradesh": {
+    cities: ["Lucknow", "Kanpur", "Agra", "Varanasi", "Ghaziabad"],
+    districts: ["Lucknow", "Kanpur", "Agra", "Varanasi", "Ghaziabad"],
+  },
+  Uttarakhand: {
+    cities: ["Dehradun", "Haridwar", "Nainital", "Rudrapur", "Haldwani"],
+    districts: ["Dehradun", "Nainital", "Haridwar", "Udhamsingh Nagar"],
+  },
+  "West Bengal": {
+    cities: ["Kolkata", "Siliguri", "Howrah", "Durgapur", "Asansol"],
+    districts: [
+      "Kolkata",
+      "Howrah",
+      "Birbhum",
+      "Murshidabad",
+      "North 24 Parganas",
+    ],
+  },
+};

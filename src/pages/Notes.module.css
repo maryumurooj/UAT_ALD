@@ -1,0 +1,115 @@
+.notesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+  .noNotesMessage{
+    color: #616060;
+    text-align: center;
+    justify-content: center;
+    font-size: larger;
+    font-style: italic;
+  }
+  
+  .noteCard {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, max-height 0.3s ease;
+    cursor: pointer;
+    max-height: 80px; /* Default height for collapsed view */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .noteCard:hover {
+    transform: scale(1.02);
+    max-height: 150px; /* Expanded view on hover */
+    background: #efefef;
+
+  }
+  
+  .noteCard.expanded {
+    max-height: 500px; /* Fully expanded view */
+  }
+  
+  .citation {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .noteText {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .noteTextEdit {
+    width: 90%;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+    min-height: 200px;
+  }
+  
+  .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .editButton, .saveButton {
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+  }
+  
+  .editButton {
+    background-color: #007bff;
+  }
+  
+  .saveButton {
+    background-color: #28a745;
+  }
+  .noteHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.citation {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.openButton {
+  background-color: #E34A3E;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.openButton:hover {
+  background-color: #d43d32;
+}

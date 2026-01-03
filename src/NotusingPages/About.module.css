@@ -1,0 +1,94 @@
+.container {
+  position: relative;  
+}
+.title {
+  position: absolute;
+  font-size: 35px;
+  left: 84px;
+  top: -80px;
+  font-weight: bold;
+  font-family: "Palatino ExtraBold";
+}
+
+.searchBar {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  top: -50px;
+  right: -170px;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(590.45px);
+  border-radius: 87px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #6f6f6f;
+}
+
+.searchInput {
+  width: 500px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.37);
+  border-radius: 32px;
+  border: 1px;
+  border-color: black;
+  padding: 25px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  text-align: left;
+}
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  fill: #8f8f8f;
+  margin-left: 10px;
+  position: absolute;
+  right: 25px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.scrollableText {
+    height: 355px;
+    overflow-y: auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-star; /* Correct the justify-content property */
+    width: 1200px; /* Adjust as needed */
+    margin: 100px auto 0; /* Center and add top margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid black; 
+    border-radius:10px;
+    padding:20px;
+}
+
+/* Hide scrollbar for WebKit browsers by default */
+.scrollableText::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent; /* Makes scrollbar background transparent */
+}
+
+.scrollableText::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Initially make thumb transparent */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.scrollableText:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(145, 145, 145, 0.5); /* Visible on hover with transparency */
+}
+
+.scrollableText::-webkit-scrollbar-track {
+    background-color: transparent; /* Color of the scrollbar track */
+}
+
+.h2 {
+    text-align: center;
+    font-family: "Palatino ExtraBold";
+
+}
+
+

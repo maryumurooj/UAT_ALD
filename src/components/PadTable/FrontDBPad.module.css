@@ -1,0 +1,229 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #fff; /* Added explicit background */
+  border-radius: 8px; /* Match parent styling */
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 14px; /* Increased from 12px */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button {
+  padding: 10px 18px; /* Increased from 5px 10px */
+  border: 2px solid transparent; /* Added default border for consistency */
+  border-radius: 6px;
+  font-size: 14px; /* Increased from 12px */
+  font-weight: 600; /* Increased from 500 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  min-width: 140px; /* Increased from 120px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+  letter-spacing: 0.3px; /* Improved readability */
+}
+
+.button:disabled {
+  opacity: 0.5; /* Reduced from 0.6 for clearer disabled state */
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none; /* Remove shadow when disabled */
+}
+
+.button:not(:disabled):hover {
+  transform: translateY(-2px); /* Increased from -1px */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.button:not(:disabled):active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* PRINT BUTTON - Enhanced Visibility */
+.printButton {
+  background-color: #E34A3E;
+  color: #ffffff;
+  border-color: #E34A3E;
+}
+
+.printButton:not(:disabled):hover {
+  background-color: #c9352b; /* Darker - was #d43d32 */
+  border-color: #c9352b;
+  box-shadow: 0 6px 12px rgba(227, 74, 62, 0.3);
+}
+
+.printButton:disabled {
+  background-color: #e8e8e8; /* Darker disabled state - was #f5f5f5 */
+  color: #888; /* Darker text - was #999 */
+  border-color: #d0d0d0; /* Visible border - was transparent */
+}
+
+/* PRINT ALL BUTTON - Enhanced Visibility */
+.printAllButton {
+  background-color: #1a1a1a; /* Slightly lighter than pure black */
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.printAllButton:not(:disabled):hover {
+  background-color: #404040; /* Lighter - was #333333 */
+  border-color: #404040;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+.printAllButton:disabled {
+  background-color: #e8e8e8; /* Darker - was #f5f5f5 */
+  color: #888; /* Darker - was #999 */
+  border-color: #d0d0d0; /* Visible border */
+}
+
+/* CLEAR BUTTON - Enhanced Visibility */
+.clearButton {
+  background-color: #fff;
+  color: #E34A3E;
+  border: 2px solid #E34A3E;
+  font-weight: 700; /* Extra bold for outline button */
+}
+
+.clearButton:not(:disabled):hover {
+  background-color: #E34A3E;
+  color: #ffffff;
+  border-color: #E34A3E;
+  box-shadow: 0 6px 12px rgba(227, 74, 62, 0.25);
+}
+
+.clearButton:disabled {
+  background-color: #f8f8f8; /* Slightly darker - was #f5f5f5 */
+  color: #999; /* Kept same as it's already muted */
+  border-color: #c0c0c0; /* Darker - was #ddd */
+}
+
+/* STATUS MESSAGE - Enhanced Visibility */
+.statusMessage {
+  text-align: center;
+  font-size: 13px; /* Increased from 12px */
+  color: #444; /* Darker - was #666 */
+  font-style: italic;
+  font-weight: 500; /* Added weight */
+  padding: 10px 12px; /* Increased from 8px */
+  background-color: #f5f5f5; /* Slightly darker - was #f8f8f8 */
+  border-radius: 6px;
+  border: 2px solid #d0d0d0; /* Thicker and darker - was 1px #eee */
+}
+
+/* FOCUS STATES for Accessibility */
+.button:focus-visible {
+  outline: 3px solid #E34A3E;
+  outline-offset: 2px;
+}
+
+.printButton:focus-visible {
+  outline-color: #E34A3E;
+}
+
+.printAllButton:focus-visible {
+  outline-color: #1a1a1a;
+}
+
+.clearButton:focus-visible {
+  outline-color: #E34A3E;
+}
+
+/* Loading State Enhancement */
+.button:disabled.loading {
+  background-color: #f0f0f0;
+  color: #666;
+  position: relative;
+}
+
+.button:disabled.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  border: 2px solid #999;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+    align-items: stretch; /* Changed from center */
+    gap: 12px;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 100%; /* Changed from 250px to fill width */
+    min-width: auto;
+    padding: 12px 20px; /* Larger touch targets */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 14px; /* Increased from 12px */
+  }
+  
+  .button {
+    padding: 14px 18px; /* Even larger on mobile */
+    font-size: 15px; /* Increased from 13px */
+    font-weight: 600;
+  }
+  
+  .buttonContainer {
+    gap: 10px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .button {
+    border-width: 3px;
+  }
+  
+  .printButton,
+  .printAllButton {
+    border-color: currentColor;
+  }
+  
+  .button:disabled {
+    opacity: 0.4;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:not(:disabled):hover {
+    transform: none;
+  }
+  
+  @keyframes spinner {
+    to {
+      transform: none;
+    }
+  }
+}

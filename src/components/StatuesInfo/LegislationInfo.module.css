@@ -1,0 +1,112 @@
+.legislationInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shortNote {
+    margin-bottom: 20px;
+}
+
+.longNote {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination span {
+    margin: 0 10px;
+}
+
+.citationsBar {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    height: 35px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    padding: 0 10px;
+    /* Optional: Add some padding on the sides */
+    border-radius: 5px;
+    /* Add rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow for a 3D effect */
+    background: linear-gradient(180deg, #dddddd, #f9f9f9);
+    /* Gradient background for depth */
+    border: 1px solid #ddd;
+    /* Add a border to define edges */
+}
+
+.citationsList {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    /* Adjust gap as needed */
+}
+
+.citationItem {
+    display: inline-block;
+    max-width: 669px;
+    /* Reduced width for better minimal look */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 8px;
+    /* Optional: Adds spacing between items */
+    padding: 0 5px;
+    /* Optional: Add padding inside each citation item */
+    border-left: 1px solid #000000;
+    /* Add subtle partition line */
+}
+
+.citationItem:first-child {
+    border-left: none;
+    /* Remove border for the first item */
+}
+
+.openButton {
+    margin-left: auto;
+    background-color: #000000;
+    color: white;
+    border: 2px solid #333;
+    padding: 5px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+    height: 25px;
+}
+
+.openButton:hover {
+    background-color: #E34A3E;
+    border-color: #000;
+}
+
+.openButton:focus {
+    outline: none;
+}

@@ -1,0 +1,10 @@
+.pdfContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdfContainer .react-pdf__Page {
+    margin: 0px;
+    /* Adjust the margin between pages as needed */
+}

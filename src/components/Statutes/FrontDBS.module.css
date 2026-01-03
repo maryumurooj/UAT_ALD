@@ -1,0 +1,109 @@
+/* Updated FrontDashboard CSS */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+  /* Reduced padding-bottom */
+  margin: 0;
+  /* Removed margin */
+  font-size: 12px;
+  /* Reduced font size */
+  color: #000;
+  font-weight: 400;
+  margin-left: 50px;
+  /* Reduced margin-left */
+  position: relative;
+  top: 0;
+  /* Ensure the dashboard starts from the top */
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  border: none;
+  /* Removed border around content */
+  overflow: visible;
+  /* Ensure no overflow of rounded corners */
+  padding: 2px;
+  /* Reduced padding */
+}
+
+.textButton {
+  background-color: #fff;
+  /* Default background color */
+  color: #000;
+  /* Default text color */
+  font-weight: 500;
+  /* Increased font weight for a more button-like feel */
+  font-size: 14px;
+  /* Adjusted font size */
+  border: none;
+  /* Removed default border */
+  border-left: 0.5px solid #E34A3E;
+  /* Thin vertical border */
+  border-right: 0.5px solid #E34A3E;
+  /* Thin vertical border */
+  border-bottom: 1px solid #E34A3E;
+  /* Red bottom border */
+  padding: 6px 24px;
+  /* Adjusted padding for button size */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  /* Smooth transitions */
+  font-family: 'Palatino';
+  /* Font family */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Added box shadow for depth */
+}
+
+.textButton:first-child {
+  border-top-left-radius: 0;
+  /* Removed top-left corner rounding */
+  border-bottom-left-radius: 15px;
+  /* Rounded bottom-left corner for the first button */
+}
+
+.textButton:last-child {
+  border-top-right-radius: 0;
+  /* Removed top-right corner rounding */
+  border-bottom-right-radius: 15px;
+  /* Rounded bottom-right corner for the last button */
+}
+
+.textButton:not(:first-child):not(:last-child) {
+  border-left: 0.5px solid #ffffff;
+  /* Vertical border between middle buttons */
+}
+
+.textButton:hover {
+  background-color: #f0f0f0;
+  /* Lightened background on hover */
+  transform: translateY(1px);
+  /* Slight vertical movement */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* Reduced shadow to make it look pressed */
+}
+
+.textButton.active {
+  background-color: #E34A3E;
+  /* Background color for active state */
+  color: #fff;
+  /* Text color for active state */
+  font-weight: 600;
+  /* Increased font weight for emphasis */
+  box-shadow: 0 0 10px rgba(227, 74, 62, 0.5);
+  /* Glow effect */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+  /* Smooth transitions */
+}
+
+.textButtonWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+

@@ -1,0 +1,342 @@
+
+.footerChild {
+  height: 236px;
+  width: 1440px;
+  position: relative;
+
+  display: none;
+  max-width: 100%;
+}
+.ald,
+.divider {
+  background-color: black;
+  position: flex;
+  display: flex;
+  z-index: 0;
+}
+.ald {
+
+  margin: 0;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: inherit;
+  display: wrap;
+  min-width: 43px;
+}
+.divider {
+  align-self: stretch;
+  width: 5px;
+  border-right: 1px solid white;
+  box-sizing: border-box;
+}
+.about,
+.contacts,
+.home {
+  position: relative;
+  display: inline-block;
+  min-width: 48px;
+  z-index: 1;
+  bottom: 0; /* Stick it to the bottom of the viewport */
+
+}
+.contacts {
+  min-width: 74px;
+}
+.resourceTitles {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 7px;
+}
+.aldParent,
+.internalResources,
+.verticalNavigation {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.verticalNavigation {
+  flex-direction: column;
+  padding: 10px 0 0;
+}
+.aldParent,
+.internalResources {
+  align-self: stretch;
+}
+.internalResources {
+  margin-top:5px;
+  flex-direction: row;
+  gap: 18px;
+  font-size: var(--font-size-base);
+  font-family: var(--font-Palatino);
+}
+.aldParent {
+  flex-direction: column;
+}
+.help,
+.updates {
+  position: relative;
+  display: inline-block;
+  min-width: 36px;
+  z-index: 1;
+}
+.updates {
+  min-width: 68px;
+}
+.navigationArea,
+.supportArea,
+.supportLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.supportArea {
+gap:10px;
+}
+
+.navigationArea,
+.supportArea {
+  height: 104.6px;
+  font-size: var(--font-size-base);
+  font-family: var(--font-Palatino);
+}
+.navigationArea {
+  height: 155.1px;
+  width: 294px;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 133px;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: white;
+  font-family: var(--font-abhaya-libre-extrabold);
+}
+.legalServicesOffered {
+  margin:0px;
+  width: 282px;
+  position: relative;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  z-index: 1;
+}
+.divider1 {
+  margin-top: 2px;
+  align-self: stretch;
+  width: 1px;
+  position: relative;
+  border-right: 1px solid white;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.index1,
+.judges,
+.statutes,
+.updates1 {
+  position: relative;
+  display: inline-block;
+  min-width: 43px;
+  z-index: 1;
+}
+.judges,
+.statutes,
+.updates1 {
+  min-width: 99px;
+}
+.statutes,
+.updates1 {
+  min-width: 68px;
+}
+.statutes {
+  min-width: 67px;
+}
+.indexParent,
+.resourcesRow {
+  height: 126px;
+  width: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.resourcesRow {
+  width: 99px;
+  flex-direction: row;
+  gap: 30px;
+}
+.articles,
+.caseFinder,
+.caseInfo {
+  position: relative;
+  display: inline-block;
+  min-width: 59px;
+  z-index: 1;
+}
+.caseFinder,
+.caseInfo {
+  min-width: 95px;
+}
+.caseInfo {
+  min-width: 76px;
+}
+.articleLinks,
+.informationColumn,
+.resourcesRowParent {
+  margin-top:5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.articleLinks {
+  flex-direction: column;
+  gap: 10px;
+}
+.informationColumn,
+.resourcesRowParent {
+  width: 362px;
+}
+.resourcesRowParent {
+  height: 126px;
+  flex-direction: row;
+  gap: 168px;
+  font-family: Palatino;
+}
+.informationColumn {
+  flex-direction: column;
+  gap: var(--gap-7xs);
+  max-width: 100%;
+}
+.reachUs {
+  margin: 0;
+  width: 111px;
+  height: 20px;
+  line-height: 26px;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.divider2,
+.emailAddress,
+.reachUs {
+  position: relative;
+  z-index: 1;
+}
+.divider2 {
+  align-self: stretch;
+  width: 1px;
+  border-right: 1px solid white;
+  box-sizing: border-box;
+}
+.emailAddress {
+  display: inline-block;
+  min-width: 93px;
+}
+.salesaldonlinein {
+  white-space: nowrap;
+}
+.address
+.salesaldonlinein {
+  position: relative;
+  z-index: 1;
+}
+.emailInfo,
+.emailLink {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.emailInfo {
+  gap:10px;
+  width: 162px;
+  padding: 17.5px 0 0;
+  box-sizing: border-box;
+}
+.contactDetails {
+  align-self: stretch;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  font-size: var(--font-size-base);
+  font-family: var(--font-Palatino);
+}
+.contactArea,
+.contactDetails,
+.footer {
+  display: flex;
+  align-items: flex-start;
+}
+.contactArea {
+  height: 155px;
+  width: 208px;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.footer {
+  width: 100%;
+  background-color: black;
+  color: aliceblue;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24px 120px 54px 84px;
+  box-sizing: border-box;
+  line-height: normal;
+  letter-spacing: normal;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  font-family: var(--font-abhaya-libre-extrabold);
+}
+@media screen and (max-width: 1100px) {
+  .footer {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 750px) {
+  .footer {
+    padding-left: 42px;
+    padding-right: 60px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .ald {
+    font-size: var(--font-size-lgi);
+    line-height: 21px;
+  }
+  .navigationArea {
+    gap: 66px;
+  }
+
+  .footer {
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 120px 54px 84px;
+    box-sizing: border-box;
+    line-height: normal;
+    letter-spacing: normal;
+    gap: var(--gap-xl);
+    text-align: left;
+    font-size: var(--font-size-5xl);
+    font-family: var(--font-abhaya-libre-extrabold);
+    position: relative; /* Stick it to the bottom of the viewport */
+    bottom: 0; /* Stick it to the bottom of the viewport */
+  }
+
+}
+
+
+
