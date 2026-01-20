@@ -20,6 +20,7 @@ import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate, useLocation } from "react-router-dom";
 import UpdateUsernameModal from "../Modals/UpdateNameModal.jsx";
+import api from "../../axios"
 
 
 const Auth = () => {

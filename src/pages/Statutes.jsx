@@ -6,6 +6,7 @@
   import parse from 'html-react-parser';
   import LegislationInfo from "../components/StatuesInfo/LegislationInfo";
   import AmendmentInfo from "../components/StatuesInfo/AmendmentInfo";
+  import api from "../axios";
 
   const Statutes = () => {
     const [topHtmlContent, setTopHtmlContent] = useState('');

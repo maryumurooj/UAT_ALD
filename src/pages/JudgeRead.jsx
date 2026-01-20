@@ -4,6 +4,7 @@ import Styles from "./ArticleView/ArticleViewNoList.module.css";
 import FDB from "../components/ArticleViewTools/FDBArticle.jsx";
 import { pdfjs } from 'react-pdf';
 import PDFFile from "./ArticleView/Pdfviewer.jsx";
+import api from "../axios";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',

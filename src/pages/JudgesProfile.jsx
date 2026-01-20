@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../axios";
 import { Link } from "react-router-dom";
 import styles from "./JudgesProfile.module.css"; // Use appropriate styles or create new ones
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./SidePanel.module.css";
 import HighlightWords from "react-highlight-words";
 import { frontendCache } from "../../utils/cache.js";
+import api from "../../axios";
 
 const SidePanel = ({
   setResults,
@@ -215,13 +216,15 @@ const SidePanel = ({
         subsection,
       });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/search?legislationName=${legislationName}&section=${section}&subsection=${subsection}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
+      const response = await api.get("/api/search", {
+        params: {
+          legislationName,
+          section,
+          subsection,
+        },
+      });
+
+      const data = response.data;
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
@@ -251,7 +254,6 @@ const SidePanel = ({
   };
 
   //fetching DropDowns
-
   useEffect(() => {
     const fetchDropdownData = async () => {
       try {
@@ -272,13 +274,8 @@ const SidePanel = ({
         }
 
         // No cache, fetch fresh data
-        const response = await fetch(
-          "http://61.246.67.74:4001/api/uat/dropdown-data-cache"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch dropdown data");
-        }
-        const data = await response.json();
+        const response = await api.get("/api/dropdown-data-cache");
+        const data = response.data;
 
         // Set data in state
         setLegislationNames(data.legislationNames);
@@ -305,13 +302,20 @@ const SidePanel = ({
       setIsLoading(true);
       createSearchContext("TOPIC INDEX", { topic });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByTopic?topic=${topic}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const response = await api.get("/api/searchByTopic", {
+        params: { topic },
+      });
+
+      const data = response.data;
+
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null); // Prevent setting bad data
+        toast.error(`Error: ${error.message}`);
+
+        return;
       }
-      const data = await response.json();
+
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
@@ -319,7 +323,7 @@ const SidePanel = ({
       );
       setResults(uniqueResults);
       setJudgmentCount(uniqueResults.length);
-      console.log("Search results:", data);
+      // console.log("Search results:", data);
 
       // Add this to store search terms for highlighting
       setSearchTerms([topic].filter((term) => term));
@@ -337,35 +341,46 @@ const SidePanel = ({
       const nominalValue = nominal || "";
       createSearchContext("NOMINAL INDEX", { nominal: nominalValue });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByNominal?nominal=${nominalValue}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      // Use Axios instance
+      const response = await api.get(`/api/searchByNominal`, {
+        params: { nominal: nominalValue },
+      });
+
+      const data = response.data;
+
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null);
+        toast.error(`Error: ${data?.error || "Unknown error"}`);
+        return;
       }
-      const data = await response.json();
+
+      // Deduplicate results by judgmentId
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
         data.find((result) => result.judgmentId === judgmentId)
       );
+
       setResults(uniqueResults);
       setJudgmentCount(uniqueResults.length);
 
-      // Add this to store search terms for highlighting
+      // Store search terms for highlighting
       setSearchTerms([nominalValue].filter((term) => term));
     } catch (err) {
       console.error("Error fetching data:", err);
       setError(err);
       setResults([]);
       setJudgmentCount(0);
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  //search by CaseNo
+  // Search by CaseNo
   const handleCaseNoSearch = async (selectedCase) => {
     try {
       setIsLoading(true);
+
       const caseNoText = selectedCase.judgmentNoText || "";
 
       // Create search context
@@ -376,32 +391,43 @@ const SidePanel = ({
         caseNoText,
       });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByCaseNo?caseinfo=${caseNoText}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      // Use Axios instance with params
+      const response = await api.get("/api/searchByCaseNo", {
+        params: { caseinfo: caseNoText },
+      });
+
+      const data = response.data;
+
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null); // Prevent setting bad data
+        toast.error(`Error: ${data?.error || "Unknown error"}`);
+        return;
       }
-      const data = await response.json();
+
+      // Deduplicate results by judgmentId
       const uniqueResults = Array.from(
-        new Set(data.map((result) => result.judgmentId))
-      ).map((judgmentId) =>
-        data.find((result) => result.judgmentId === judgmentId)
-      );
+        new Set(data.map((r) => r.judgmentId))
+      ).map((judgmentId) => data.find((r) => r.judgmentId === judgmentId));
+
       setResults(uniqueResults);
       setJudgmentCount(uniqueResults.length);
+
+      // Store search terms for highlighting
       setSearchTerms([caseNoText].filter((term) => term));
     } catch (err) {
       console.error("Error fetching data:", err);
       setError(err);
       setResults([]);
       setJudgmentCount(0);
+    } finally {
+      setIsLoading(false);
     }
   };
+
   const handleCaseNoSelect = (selectedCase) => {
     handleCaseNoSearch(selectedCase);
   };
-
   //search by Advocate
   const handleAdvocateSearch = async () => {
     try {
@@ -411,13 +437,17 @@ const SidePanel = ({
         advocateName: advocateNameValue,
       });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByAdvocate?advocateName=${advocateNameValue}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const response = await api.get("/api/searchByAdvocate", {
+        params: { advocateName: advocateNameValue },
+      });
+      const data = response.data;
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null); // Prevent setting bad data
+        toast.error(`Error: ${error.message}`);
+
+        return;
       }
-      const data = await response.json();
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
@@ -433,20 +463,23 @@ const SidePanel = ({
       setJudgmentCount(0);
     }
   };
-
   //search by Judge
   const handleJudgeSearch = async () => {
     try {
       setIsLoading(true);
       createSearchContext("JUDGE INDEX", { judge: judge });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByJudge?judge=${judge}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const response = await api.get("/api/searchByJudge", {
+        params: { judge },
+      });
+      const data = response.data;
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null); // Prevent setting bad data
+        toast.error(`Error: ${error.message}`);
+
+        return;
       }
-      const data = await response.json();
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
@@ -463,7 +496,7 @@ const SidePanel = ({
     }
   };
 
-  //Citation search
+  
   const handleCitationSearch = async (selectedCitation) => {
     try {
       setIsLoading(true);
@@ -478,13 +511,17 @@ const SidePanel = ({
         citationText: CitationText,
       });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByCitation?CitationText=${CitationText}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const response = await api.get("/api/searchByCitation", {
+        params: { CitationText: CitationText },
+      });
+      const data = response.data;
+      if (!data || data.error) {
+        console.error("Error in response data:", data.error);
+        setJudgmentData(null); // Prevent setting bad data
+        toast.error(`Error: ${error.message}`);
+
+        return;
       }
-      const data = await response.json();
       const uniqueResults = Array.from(
         new Set(data.map((result) => result.judgmentId))
       ).map((judgmentId) =>
@@ -509,44 +546,45 @@ const SidePanel = ({
     }
   }, [citation, onSearch]);
 
-  //Equals Search
-  const handleEquivalentSearch = async (selectedEqual) => {
-    try {
-      setIsLoading(true);
-      const EqualText = selectedEqual.equalCitationText || "";
+ //Equals Search
+const handleEquivalentSearch = async (selectedEqual) => {
+  try {
+    setIsLoading(true);
+    const EqualText = selectedEqual.equalCitationText || '';
 
-      // Create search context
-      createSearchContext("EQUIVALENT INDEX", {
-        equivalentYear,
-        equivalentVolume,
-        equivalentPublicationName,
-        equivalentPageNo,
-        completeEquivalentCitation,
-        equalText: EqualText,
-      });
+ // Create search context
+    createSearchContext('EQUIVALENT INDEX', {
+      equivalentYear,
+      equivalentVolume,
+      equivalentPublicationName,
+      equivalentPageNo,
+      completeEquivalentCitation,
+      equalText: EqualText
+    });
 
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/searchByEquivalent?EqualText=${EqualText}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+    const response = await api.get('/api/searchByEquivalent', { params: { EqualText: EqualText } });
+     const data = response.data;
+    if (!data || data.error) {
+        console.error('Error in response data:', data.error);
+        setJudgmentData(null); // Prevent setting bad data
+		toast.error(`Error: ${error.message}`);
+
+        return;
       }
-      const data = await response.json();
-      const uniqueResults = Array.from(
-        new Set(data.map((result) => result.judgmentId))
-      ).map((judgmentId) =>
-        data.find((result) => result.judgmentId === judgmentId)
-      );
-      setResults(uniqueResults);
-      setJudgmentCount(uniqueResults.length);
-      setSearchTerms([EqualText].filter((term) => term));
-    } catch (err) {
-      console.error("Error fetching data:", err);
-      setError(err);
-      setResults([]);
-      setJudgmentCount(0);
-    }
-  };
+	  const uniqueResults = Array.from(new Set(data.map(result => result.judgmentId)))
+      .map(judgmentId => data.find(result => result.judgmentId === judgmentId));
+    setResults(uniqueResults);
+    setJudgmentCount(uniqueResults.length);
+    setSearchTerms([EqualText].filter(term => term));
+
+  } catch (err) {
+    console.error('Error fetching data:', err);
+    setError(err);
+    setResults([]);
+    setJudgmentCount(0);
+  }
+};
+
 
   //fetching DropDowns
 
@@ -801,33 +839,27 @@ const handleFullCitationChange = (e) => {
     setFilteredEquivalents(filtered);
   }, [year, publicationName, pageNo, equivalents]);
 
-  // Section Fetching
   const fetchSections = async (legislationId) => {
     try {
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/sections?legislationId=${legislationId}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch sections");
-      }
-      const data = await response.json();
-      setSections(data);
+      const response = await api.get("/api/sections", {
+        params: { legislationId }
+      });
+  
+      setSections(response.data);
     } catch (error) {
       console.error("Error fetching sections:", error);
     }
   };
-
-  // SubSection Fetching
-  const fetchSubsections = async (legislationSectionId) => {
+  
+  
+    // SubSection Fetching
+   const fetchSubsections = async (legislationSectionId) => {
     try {
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/subsections?legislationSectionId=${legislationSectionId}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch subsections");
-      }
-      const data = await response.json();
-      setSubsections(data);
+      const response = await api.get("/api/subsections", {
+        params: { legislationSectionId }
+      });
+  
+      setSubsections(response.data);
     } catch (error) {
       console.error("Error fetching subsections:", error);
     }
@@ -862,20 +894,17 @@ const handleFullCitationChange = (e) => {
     }
   };
 
+
   useEffect(() => {
     const fetchPublications = async () => {
       try {
-        const response = await fetch(
-          "http://61.246.67.74:4001/api/uat/publications"
-        );
-        if (!response.ok) throw new Error("Failed to fetch publications");
-        const data = await response.json();
-        setPublications(data);
+        const response = await api.get('/api/publications'); // Axios automatically uses baseURL
+        setPublications(response.data); // Axios already parses JSON
       } catch (error) {
-        console.error("Error:", error);
+        console.error('Error fetching publications:', error);
       }
     };
-
+  
     fetchPublications();
   }, []);
 

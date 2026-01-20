@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './JudgmentStatusPage.module.css';
+import api from "../../axios"
+
 
 const JudgmentStatusPage = () => {
     const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NotesContent.module.css";
+import api from "../../axios"
 
 const NotesContent = ({ uid, judgmentId }) => {
   const [notes, setNotes] = useState("");
@@ -7,38 +8,37 @@ const NotesContent = ({ uid, judgmentId }) => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch(
-          `http://61.246.67.74:4000/api/notes?uid=${uid}&judgmentId=${judgmentId}`
-        );
-        const data = await response.json();
-        if (data.length > 0) {
-          setNotes(data[0].notesText);
+        const response = await api.get("/api/notes", {
+          params: { uid, judgmentId }, // ✅ send query params
+        });
+  
+        if (response.data.length > 0) {
+          setNotes(response.data[0].notesText);
         }
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
     };
-
+  
     if (uid && judgmentId) fetchNotes();
   }, [uid, judgmentId]);
-
+  
   const saveNotes = async () => {
     try {
-      const response = await fetch("http://61.246.67.74:4000/api/notes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ uid, judgmentId, notesText: notes }),
+      const response = await api.post("/api/notes", {
+        uid,
+        judgmentId,
+        notesText: notes,
       });
-
-      if (response.ok) {
+  
+      if (response.data.success || response.status === 200) {
         alert("Notes saved successfully!");
       } else {
-        alert("Notes failed.", error);
+        alert("Failed to save notes.");
       }
     } catch (error) {
       console.error("Error saving notes:", error);
+      alert("Error saving notes. Please try again.");
     }
   };
 

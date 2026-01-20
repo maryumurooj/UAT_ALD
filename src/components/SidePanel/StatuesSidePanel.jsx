@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../axios";
 import styles from "./SSPanel.module.css";
+import api from "../../axios"
 
 function SidePanel({
   onBareActSelect,

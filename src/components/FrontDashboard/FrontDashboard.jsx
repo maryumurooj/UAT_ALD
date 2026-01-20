@@ -9,6 +9,7 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import { PDFViewer, PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import aldlogo from '../../assets/DASHTitle/ALDONLINELOGOTITLE.png'
 import checkSubscriptionStatus from '../../services/subscriptionChecker';
+import api from "../../axios"
 
 
 
@@ -139,13 +140,9 @@ const isForwardDisabled = currentStep >= historyStack.length - 1;
     { name: "Status", key: "status" },  
     { name: "Equals", key: "equals" },
     { name: "Cited", key: "cited" }, 
-    { name: "Notes", key: "notes" }, 
     { name: "-", key: "minus" }, 
     { name: "+", key: "plus" }, 
-    { name: "Bookmark", key: "bookmark" }, 
-    { name: "Pad", key: "pad" }, 
     { name: "Print", key: "print" }, 
-    { name: "True Print", key: "truePrint" },
     { name: "Content Print", key: "contentPrint" },
     { name: "Download", key: "download" },
     { 
@@ -315,22 +312,6 @@ const isForwardDisabled = currentStep >= historyStack.length - 1;
 
       case "print":
         handlePrint();
-        break;
-
-      case "pad":
-        navigate("/pad");
-        break;
-
-      case "bookmark":
-        setBookmarkModalOpen(true);
-        break;
-
-      case "truePrint":
-        if (typeof onTruePrint === "function") {
-          onTruePrint();
-        } else {
-          console.error("onTruePrint is not a function");
-        }
         break;
 
       case "contentPrint":

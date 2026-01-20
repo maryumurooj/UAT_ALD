@@ -9,7 +9,7 @@ import THighCourtPhoto from "../assets/oie_xMU8o4kn68SP.png";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "./../services/AuthContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Install axios if not already done (npm install axios)
+import api from "../axios";
 
 function Home() {
   const textRef = useRef(null); // Ref for the text element

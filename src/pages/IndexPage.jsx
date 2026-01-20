@@ -32,6 +32,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import BarLoader from "react-spinners/BarLoader.js";
 import LZString from "lz-string"; // Compression library
+import api from "../axios";
 
 const IndexPage = () => {
   const { user, subscriptionStatus } = useAuth();

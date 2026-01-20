@@ -3,6 +3,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Styles from "./ArticleView/ArticleViewNoList.module.css";
+import api from "../axios"
 
 const ArticleRead = () => {
     const { fileName } = useParams();

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PDFDocument, rgb } from "pdf-lib";
 import { db, auth } from "./../services/firebaseConfig"; // Firestore & Auth config
 import { onAuthStateChanged } from "firebase/auth"; // Firebase Auth methods
+import api from "../../axios"
 
 const PDFManipulator = ({ pdfUrl, onSuccess }) => {
   const [currentUser, setCurrentUser] = useState(null); // State to store current user's data

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styles from "./JudgmentContent.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import IsolatedEditModal from "./IsolatedEditModal";
+import api from "../../axios"
 
 const JudgmentContent = ({
   judgmentData,

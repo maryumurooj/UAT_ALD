@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Notes.module.css";
 import { useNavigate } from "react-router";
+import api from "../axios";
 
 const NotesViewer = ({ uid }) => {
   // Pass `uid` as a prop

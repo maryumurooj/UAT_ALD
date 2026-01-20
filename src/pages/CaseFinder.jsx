@@ -20,6 +20,7 @@ import { useLocation } from 'react-router-dom';
 import BarLoader from "react-spinners/BarLoader";
 import PDFManipulator from '../components/PDFManipulator';
 import LZString from "lz-string"; // Compression library
+import api from "../axios"
 
 
 const CaseFinder = () => {
