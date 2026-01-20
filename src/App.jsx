@@ -21,7 +21,6 @@ import Profile from "./components/Authentication/Profile.jsx";
 import "./App.css";
 import BillingAddress from "./components/Authentication/BillingAddress.jsx";
 import ProtectedRoute from "./components/Authentication/ProtectedRoute.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
 import Terms from "./pages/Terms&Conditions.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import RefundAndCancellationPolicy from "./pages/RefundAndCancellationPolicy.jsx";
@@ -446,10 +445,7 @@ const App = () => {
               path="/judgments"
               element={<ProtectedRoute element={<JudgmentStatusPage />} />}
             />
-            <Route
-              path="/AdminDashboard"
-              element={<ProtectedRoute element={<AdminDashboard />} />}
-            />
+           
             <Route path="/TermsAndConditions" element={<Terms />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
             <Route

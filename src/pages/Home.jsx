@@ -80,8 +80,8 @@ function Home() {
   useEffect(() => {
     const fetchJudgments = async () => {
       try {
-        const response = await fetch(
-          "http://61.246.67.74:4001/api/uat/latest-judgments2"
+        const response = await api.get(
+          "/api/uat/latest-judgments2"
         );
         const data = await response.json();
         setJudgments(data);

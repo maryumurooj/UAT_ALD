@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ProfileDashboard.module.css";
 import Profile from "../components/Authentication/Profile";
-import LJ from "./LJReplace";
 import Bookmark from "./Bookmark";
 import Notes from "./Notes.jsx";
 import { signOut } from "firebase/auth";
