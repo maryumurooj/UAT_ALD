@@ -216,7 +216,7 @@ const SidePanel = ({
         subsection,
       });
 
-      const response = await api.get("/api/search", {
+      const response = await api.get("/api/uat/search", {
         params: {
           legislationName,
           section,
@@ -841,7 +841,7 @@ const handleFullCitationChange = (e) => {
 
   const fetchSections = async (legislationId) => {
     try {
-      const response = await api.get("/api/sections", {
+      const response = await api.get("/api/uat/sections", {
         params: { legislationId }
       });
   

@@ -40,8 +40,8 @@ const JudgmentContent = ({
       if (!localJudgmentData?.judgmentId) return;
 
       try {
-        const response = await fetch(
-          `${API_BASE}/judgment-status/${localJudgmentData.judgmentId}`
+        const response = await api.get(
+          `api/uat/judgment-status/${localJudgmentData.judgmentId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -64,8 +64,8 @@ const JudgmentContent = ({
   // Update status
   const updateStatus = async (newStatus) => {
     try {
-      const response = await fetch(
-        `${API_BASE}/judgment-status/${localJudgmentData.judgmentId}`,
+      const response = await api.get(
+        `api/uat/judgment-status/${localJudgmentData.judgmentId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

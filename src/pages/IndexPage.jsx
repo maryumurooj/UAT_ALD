@@ -275,32 +275,42 @@ const IndexPage = () => {
     return num + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
   };
 
-  const handleSearchById = async (judgmentId) => {
-    try {
-      const response = await fetch(
-        `http://61.246.67.74:4001/api/uat/judgments/${judgmentId}`
+const handleSearchById = async (judgmentId) => {
+  try {
+    setIsLoading(true);
+
+    const response = await api.get(`/api/uat/judgments/${judgmentId}`);
+    const data = response.data;
+
+    if (!data || data.error) {
+      console.error("Error in response data:", data?.error);
+      setJudgmentData(null);
+
+      toast.error(
+        data?.message ||
+        data?.error ||
+        "Failed to load judgment"
       );
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      if (!data || data.error) {
-        console.error("Error in response data:", data.error);
-        setJudgmentData(null); // Prevent setting bad data
-        return;
-      }
-
-      console.log("Received data:", data);
-      setJudgmentData(data);
-    } catch (error) {
-      console.error("Error fetching judgment:", error);
-      setJudgmentData(null); // Ensure UI doesn't crash
-    } finally {
-      setIsLoading(false);
+      return;
     }
-  };
+
+    console.log("Received data:", data);
+    setJudgmentData(data);
+
+  } catch (error) {
+    console.error("Error fetching judgment:", error);
+    setJudgmentData(null);
+
+    toast.error(
+      error.response?.data?.message ||
+      error.message ||
+      "Unauthorized or failed to fetch judgment"
+    );
+
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const scrollToTop = () => {
     if (contentRef.current) {
