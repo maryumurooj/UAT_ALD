@@ -80,18 +80,17 @@ function Home() {
   useEffect(() => {
     const fetchJudgments = async () => {
       try {
-        const response = await api.get(
-          "/api/uat/latest-judgments2"
-        );
-        const data = await response.json();
-        setJudgments(data);
+        const response = await api.get("/api/uat/latest-judgments2"); // use axios instance
+        setJudgments(Array.isArray(response.data) ? response.data : []);// Axios returns data directly in response.data
       } catch (error) {
         console.error("Error fetching judgments:", error);
+        setJudgments([]);
       }
     };
-
+  
     fetchJudgments();
   }, []);
+  
 
   const section2Ref = useRef(null); // Reference for Section 2
   const section3Ref = useRef(null); // Reference for Section 2

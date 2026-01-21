@@ -34,60 +34,47 @@ const JudgmentContent = ({
   const [judgmentStatus, setJudgmentStatus] = useState(null); // null = not loaded yet
   const [lastEditedAt, setLastEditedAt] = useState(null);
 
-  // Fetch status on load
-  useEffect(() => {
-    const fetchStatus = async () => {
-      if (!localJudgmentData?.judgmentId) return;
+// ✅ FIXED: Fetch status using axios
+useEffect(() => {
+  const fetchStatus = async () => {
+    if (!localJudgmentData?.judgmentId) return;
 
-      try {
-        const response = await api.get(
-          `api/uat/judgment-status/${localJudgmentData.judgmentId}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          console.log("📊 Status loaded:", data.status);
-          setJudgmentStatus(data.status);
-          setLastEditedAt(data.lastEditedAt);
-        } else {
-          console.error("Failed to fetch status");
-          setJudgmentStatus("error"); // Show error state
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        setJudgmentStatus("error");
-      }
-    };
-
-    fetchStatus();
-  }, [localJudgmentData?.judgmentId]);
-
-  // Update status
-  const updateStatus = async (newStatus) => {
     try {
       const response = await api.get(
-        `api/uat/judgment-status/${localJudgmentData.judgmentId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: newStatus }),
-        }
+        `/api/uat/judgment-status/${localJudgmentData.judgmentId}`
       );
-
-      if (response.ok) {
-        const data = await response.json();
-        setJudgmentStatus(data.status);
-        setLastEditedAt(data.lastEditedAt);
-        console.log("✅ Status updated to:", newStatus);
-      }
+      console.log("📊 Status loaded:", response.data.status);
+      setJudgmentStatus(response.data.status);
+      setLastEditedAt(response.data.lastEditedAt);
     } catch (error) {
-      console.error("Error updating status:", error);
+      console.error("Error fetching status:", error);
+      setJudgmentStatus("error"); // Show error state
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, [judgmentData]);
+  fetchStatus();
+}, [localJudgmentData?.judgmentId]);
+
+// ✅ FIXED: Update status using axios
+const updateStatus = async (newStatus) => {
+  try {
+    const response = await api.put(
+      `/api/uat/judgment-status/${localJudgmentData.judgmentId}`,
+      { status: newStatus }
+    );
+
+    setJudgmentStatus(response.data.status);
+    setLastEditedAt(response.data.lastEditedAt);
+    console.log("✅ Status updated to:", newStatus);
+  } catch (error) {
+    console.error("Error updating status:", error);
+  }
+};
+
+useEffect(() => {
+  const timer = setTimeout(() => setLoading(false), 1000);
+  return () => clearTimeout(timer);
+}, [judgmentData]);
 
   // ✅ Only sync when judgmentData changes (new judgment loaded)
   useEffect(() => {
@@ -159,83 +146,75 @@ const JudgmentContent = ({
 
     setSaving(true);
     try {
-      const response = await fetch(`${API_BASE}/merge-paras`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          paraType: selectionType,
-          paraIds: selectedParas,
-        }),
+      // ✅ FIXED: Use axios POST
+      const response = await api.post(`/api/uat/merge-paras`, {
+        paraType: selectionType,
+        paraIds: selectedParas,
       });
 
-      if (response.ok) {
-        const result = await response.json();
+      const result = response.data;
 
-        // 👇 ADD STATUS UPDATE HERE (right after successful merge)
-        if (judgmentStatus === "untouched") {
-          updateStatus("in_progress");
-        }
-
-        if (selectionType === "judgmentTextPara") {
-          const updatedJudgmentTexts = localJudgmentData.JudgmentTexts.map(
-            (jt) => ({
-              ...jt,
-              JudgmentTextParas: jt.JudgmentTextParas.filter(
-                (para) => !result.deletedIds.includes(para.judgementTextParaId)
-              ).map((para) =>
-                para.judgementTextParaId ===
-                result.mergedPara.judgementTextParaId
-                  ? {
-                      ...para,
-                      judgementTextParaText:
-                        result.mergedPara.judgementTextParaText,
-                    }
-                  : para
-              ),
-            })
-          );
-          setLocalJudgmentData({
-            ...localJudgmentData,
-            JudgmentTexts: updatedJudgmentTexts,
-          });
-        } else if (selectionType === "longNotePara") {
-          const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) => ({
-            ...sn,
-            LongNotes: sn.LongNotes.map((ln) => ({
-              ...ln,
-              LongNoteParas: ln.LongNoteParas.filter(
-                (para) => !result.deletedIds.includes(para.longNoteParaId)
-              ).map((para) =>
-                para.longNoteParaId === result.mergedPara.longNoteParaId
-                  ? {
-                      ...para,
-                      longNoteParaText: result.mergedPara.longNoteParaText,
-                    }
-                  : para
-              ),
-            })),
-          }));
-          setLocalJudgmentData({
-            ...localJudgmentData,
-            ShortNotes: updatedShortNotes,
-          });
-        }
-
-        alert(`✓ Successfully merged ${selectedParas.length} paragraphs!`);
-        setSelectedParas([]);
-        setSelectionType(null);
-        setSelectionMode(false);
-      } else {
-        const errorText = await response.text();
-        alert(`Failed to merge paragraphs: ${errorText}`);
+      // 👇 ADD STATUS UPDATE HERE (right after successful merge)
+      if (judgmentStatus === "untouched") {
+        updateStatus("in_progress");
       }
+
+      if (selectionType === "judgmentTextPara") {
+        const updatedJudgmentTexts = localJudgmentData.JudgmentTexts.map(
+          (jt) => ({
+            ...jt,
+            JudgmentTextParas: jt.JudgmentTextParas.filter(
+              (para) => !result.deletedIds.includes(para.judgementTextParaId)
+            ).map((para) =>
+              para.judgementTextParaId ===
+              result.mergedPara.judgementTextParaId
+                ? {
+                    ...para,
+                    judgementTextParaText:
+                      result.mergedPara.judgementTextParaText,
+                  }
+                : para
+            ),
+          })
+        );
+        setLocalJudgmentData({
+          ...localJudgmentData,
+          JudgmentTexts: updatedJudgmentTexts,
+        });
+      } else if (selectionType === "longNotePara") {
+        const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) => ({
+          ...sn,
+          LongNotes: sn.LongNotes.map((ln) => ({
+            ...ln,
+            LongNoteParas: ln.LongNoteParas.filter(
+              (para) => !result.deletedIds.includes(para.longNoteParaId)
+            ).map((para) =>
+              para.longNoteParaId === result.mergedPara.longNoteParaId
+                ? {
+                    ...para,
+                    longNoteParaText: result.mergedPara.longNoteParaText,
+                  }
+                : para
+            ),
+          })),
+        }));
+        setLocalJudgmentData({
+          ...localJudgmentData,
+          ShortNotes: updatedShortNotes,
+        });
+      }
+
+      alert(`✓ Successfully merged ${selectedParas.length} paragraphs!`);
+      setSelectedParas([]);
+      setSelectionType(null);
+      setSelectionMode(false);
     } catch (error) {
       console.error("Error merging paragraphs:", error);
-      alert(`Error: ${error.message}`);
+      alert(`Failed to merge paragraphs: ${error.response?.data || error.message}`);
     } finally {
       setSaving(false);
     }
-  };
+};
 
   // Edit handlers
   const handleEdit = (fieldType, fieldId, currentValue, linkValue = "") => {
@@ -331,18 +310,16 @@ const JudgmentContent = ({
     setEditLinkValue("");
   };
 
-  // Add this function near your other handlers (around line 230)
+
+// ✅ FIXED: handleRefresh
 const handleRefresh = async () => {
   if (!localJudgmentData?.judgmentId) return;
   
   try {
     setSaving(true);
-    const response = await fetch(`${API_BASE}/judgments/${localJudgmentData.judgmentId}`);
-    if (response.ok) {
-      const freshData = await response.json();
-      setLocalJudgmentData(freshData);
-      alert("✓ Judgment data refreshed!");
-    }
+    const response = await api.get(`/api/uat/judgments/${localJudgmentData.judgmentId}`);
+    setLocalJudgmentData(response.data);
+    alert("✓ Judgment data refreshed!");
   } catch (error) {
     console.error("Error refreshing:", error);
     alert("Failed to refresh data");
@@ -351,188 +328,161 @@ const handleRefresh = async () => {
   }
 };
 
-
-  // Save handlers
-  const handleSaveJudgment = async (judgmentId, newValue) => {
+// ✅ FIXED: handleSaveJudgment
+const handleSaveJudgment = async (judgmentId, newValue) => {
     if (!judgmentId) {
       alert("Error: Judgment ID is missing");
       return;
     }
     setSaving(true);
     try {
-      const response = await fetch(`${API_BASE}/judgments/${judgmentId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          judgmentCourtText:
-            editingField === `judgment-courtText-${judgmentId}`
-              ? newValue // ← Use newValue instead of editValue
-              : localJudgmentData.judgmentCourtText,
-          judgmentJudges:
-            editingField === `judgment-judges-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentJudges,
-          judgmentNoText:
-            editingField === `judgment-noText-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentNoText,
-          judgmentParties:
-            editingField === `judgment-parties-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentParties,
-          judgmentPetitionerCouncil:
-            editingField === `judgment-petitionerCouncil-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentPetitionerCouncil,
-          judgmentRespondentCouncil:
-            editingField === `judgment-respondentCouncil-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentRespondentCouncil,
-          judgmentOtherCounsel:
-            editingField === `judgment-otherCounsel-${judgmentId}`
-              ? newValue // ← Use newValue
-              : localJudgmentData.judgmentOtherCounsel,
-        }),
+      const response = await api.put(`/api/uat/judgments/${judgmentId}`, {
+        judgmentCourtText:
+          editingField === `judgment-courtText-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentCourtText,
+        judgmentJudges:
+          editingField === `judgment-judges-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentJudges,
+        judgmentNoText:
+          editingField === `judgment-noText-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentNoText,
+        judgmentParties:
+          editingField === `judgment-parties-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentParties,
+        judgmentPetitionerCouncil:
+          editingField === `judgment-petitionerCouncil-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentPetitionerCouncil,
+        judgmentRespondentCouncil:
+          editingField === `judgment-respondentCouncil-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentRespondentCouncil,
+        judgmentOtherCounsel:
+          editingField === `judgment-otherCounsel-${judgmentId}`
+            ? newValue
+            : localJudgmentData.judgmentOtherCounsel,
       });
 
-      if (response.ok) {
-        const updatedData = await response.json();
+      const updatedData = response.data;
 
-        console.log("🟢 Server response:", updatedData);
-        console.log("🟢 Old localJudgmentData:", localJudgmentData);
+      console.log("🟢 Server response:", updatedData);
+      console.log("🟢 Old localJudgmentData:", localJudgmentData);
 
-        const newData = { ...localJudgmentData, ...updatedData };
-        console.log('🟢 New merged data:', newData);
+      const newData = { ...localJudgmentData, ...updatedData };
+      console.log('🟢 New merged data:', newData);
 
+      setLocalJudgmentData({ ...localJudgmentData, ...updatedData });
 
-        setLocalJudgmentData({ ...localJudgmentData, ...updatedData });
-
-        alert("✓ Judgment updated successfully!");
-        handleCancel();
-      } else {
-        const errorText = await response.text();
-        alert(`Failed to update judgment: ${errorText}`);
-      }
+      alert("✓ Judgment updated successfully!");
+      handleCancel();
     } catch (error) {
       console.error("Error updating judgment:", error);
-      alert(`Error updating judgment: ${error.message}`);
+      alert(`Failed to update judgment: ${error.response?.data || error.message}`);
     } finally {
       setSaving(false);
     }
-  };
+};
 
-  const handleSaveShortNote = async (shortNoteId, newValue) => {
+// ✅ FIXED: handleSaveShortNote
+const handleSaveShortNote = async (shortNoteId, newValue) => {
     if (!shortNoteId) {
       alert("Error: Short Note ID is missing");
       return;
     }
     setSaving(true);
     try {
-      const response = await fetch(`${API_BASE}/shortnote/${shortNoteId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ shortNoteText: newValue }),
+      const response = await api.put(`/api/uat/shortnote/${shortNoteId}`, {
+        shortNoteText: newValue
       });
 
-      if (response.ok) {
-        console.log('🟢 Updating short note with newValue:', newValue);
-  console.log('🟢 Old ShortNotes:', localJudgmentData.ShortNotes);
+      console.log('🟢 Updating short note with newValue:', newValue);
+      console.log('🟢 Old ShortNotes:', localJudgmentData.ShortNotes);
 
-        const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) =>
-          sn.shortNoteId === shortNoteId
-            ? { ...sn, shortNoteText: newValue }
-            : sn
-        );
+      const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) =>
+        sn.shortNoteId === shortNoteId
+          ? { ...sn, shortNoteText: newValue }
+          : sn
+      );
 
-        console.log('🟢 Updated ShortNotes:', updatedShortNotes);
-        setLocalJudgmentData({
-          ...localJudgmentData,
-          ShortNotes: updatedShortNotes,
-        });
-        alert("✓ Short note updated successfully!");
-        handleCancel();
-      } else {
-        const errorText = await response.text();
-        alert(`Failed to update short note: ${errorText}`);
-      }
+      console.log('🟢 Updated ShortNotes:', updatedShortNotes);
+      setLocalJudgmentData({
+        ...localJudgmentData,
+        ShortNotes: updatedShortNotes,
+      });
+      alert("✓ Short note updated successfully!");
+      handleCancel();
     } catch (error) {
       console.error("Error updating short note:", error);
-      alert(`Error updating short note: ${error.message}`);
+      alert(`Failed to update short note: ${error.response?.data || error.message}`);
     } finally {
       setSaving(false);
     }
-  };
+};
 
-  const handleSaveLongNotePara = async (
+// ✅ FIXED: handleSaveLongNotePara
+const handleSaveLongNotePara = async (
     longNoteParaId,
     shortNoteId,
     longNoteId,
     newValue,
     newLinkValue
-  ) => {
+) => {
     if (!longNoteParaId) {
       alert("Error: Long Note Para ID is missing");
       return;
     }
     setSaving(true);
     try {
-      const response = await fetch(
-        `${API_BASE}/longnote-para/${longNoteParaId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            longNoteParaText: newValue, // ← Use newValue instead of editValue
-            longNoteParaLink: newLinkValue, // ← Use newLinkValue instead of editLinkValue
-          }),
-        }
-      );
+      const response = await api.put(`/api/uat/longnote-para/${longNoteParaId}`, {
+        longNoteParaText: newValue,
+        longNoteParaLink: newLinkValue,
+      });
 
-      if (response.ok) {
-        const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) => {
-          if (sn.shortNoteId === shortNoteId) {
-            const updatedLongNotes = sn.LongNotes.map((ln) => {
-              if (ln.longNoteId === longNoteId) {
-                const updatedParas = ln.LongNoteParas.map((lnp) =>
-                  lnp.longNoteParaId === longNoteParaId
-                    ? {
-                        ...lnp,
-                        longNoteParaText: newValue,
-                        longNoteParaLink: newLinkValue,
-                      }
-                    : lnp
-                );
-                return { ...ln, LongNoteParas: updatedParas };
-              }
-              return ln;
-            });
-            return { ...sn, LongNotes: updatedLongNotes };
-          }
-          return sn;
-        });
-        setLocalJudgmentData({
-          ...localJudgmentData,
-          ShortNotes: updatedShortNotes,
-        });
-        alert("✓ Long note para updated successfully!");
-        handleCancel();
-      } else {
-        const errorText = await response.text();
-        alert(`Failed to update long note para: ${errorText}`);
-      }
+      const updatedShortNotes = localJudgmentData.ShortNotes.map((sn) => {
+        if (sn.shortNoteId === shortNoteId) {
+          const updatedLongNotes = sn.LongNotes.map((ln) => {
+            if (ln.longNoteId === longNoteId) {
+              const updatedParas = ln.LongNoteParas.map((lnp) =>
+                lnp.longNoteParaId === longNoteParaId
+                  ? {
+                      ...lnp,
+                      longNoteParaText: newValue,
+                      longNoteParaLink: newLinkValue,
+                    }
+                  : lnp
+              );
+              return { ...ln, LongNoteParas: updatedParas };
+            }
+            return ln;
+          });
+          return { ...sn, LongNotes: updatedLongNotes };
+        }
+        return sn;
+      });
+      setLocalJudgmentData({
+        ...localJudgmentData,
+        ShortNotes: updatedShortNotes,
+      });
+      alert("✓ Long note para updated successfully!");
+      handleCancel();
     } catch (error) {
       console.error("Error updating long note para:", error);
-      alert(`Error updating long note para: ${error.message}`);
+      alert(`Failed to update long note para: ${error.response?.data || error.message}`);
     } finally {
       setSaving(false);
     }
-  };
+};
 
-  const handleSaveJudgmentTextPara = async (
+// ✅ FIXED: handleSaveJudgmentTextPara
+const handleSaveJudgmentTextPara = async (
     paraId,
     judgmentTextId,
     newValue
-  ) => {
+) => {
     if (!paraId) {
       alert("Error: Paragraph ID is missing.");
       return;
@@ -540,54 +490,47 @@ const handleRefresh = async () => {
 
     setSaving(true);
     try {
-      const response = await fetch(`${API_BASE}/judgment-text-para/${paraId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ judgementTextParaText: newValue }),
+      const response = await api.put(`/api/uat/judgment-text-para/${paraId}`, {
+        judgementTextParaText: newValue
       });
 
-      if (response.ok) {
-        console.log('🟢 Updating para with newValue:', newValue);
-  console.log('🟢 Old JudgmentTexts:', localJudgmentData.JudgmentTexts);
-  
-        const updatedJudgmentTexts = localJudgmentData.JudgmentTexts.map(
-          (jt) => {
-            if (jt.judgementTextId === judgmentTextId) {
-              const updatedParas = jt.JudgmentTextParas.map((para) => {
-                const currentParaId =
-                  para.judgementTextParaId ||
-                  para.judgmentTextParaId ||
-                  para.id ||
-                  para.paraId;
-                return currentParaId === paraId
-                  ? { ...para, judgementTextParaText: newValue }
-                  : para;
-              });
-              return { ...jt, JudgmentTextParas: updatedParas };
-            }
-            return jt;
+      console.log('🟢 Updating para with newValue:', newValue);
+      console.log('🟢 Old JudgmentTexts:', localJudgmentData.JudgmentTexts);
+      
+      const updatedJudgmentTexts = localJudgmentData.JudgmentTexts.map(
+        (jt) => {
+          if (jt.judgementTextId === judgmentTextId) {
+            const updatedParas = jt.JudgmentTextParas.map((para) => {
+              const currentParaId =
+                para.judgementTextParaId ||
+                para.judgmentTextParaId ||
+                para.id ||
+                para.paraId;
+              return currentParaId === paraId
+                ? { ...para, judgementTextParaText: newValue }
+                : para;
+            });
+            return { ...jt, JudgmentTextParas: updatedParas };
           }
-        );
+          return jt;
+        }
+      );
 
-        console.log('🟢 Updated JudgmentTexts:', updatedJudgmentTexts);
+      console.log('🟢 Updated JudgmentTexts:', updatedJudgmentTexts);
 
-        setLocalJudgmentData({
-          ...localJudgmentData,
-          JudgmentTexts: updatedJudgmentTexts,
-        });
-        alert("✓ Judgment text para updated successfully!");
-        handleCancel();
-      } else {
-        const errorText = await response.text();
-        alert(`Failed to update: ${errorText}`);
-      }
+      setLocalJudgmentData({
+        ...localJudgmentData,
+        JudgmentTexts: updatedJudgmentTexts,
+      });
+      alert("✓ Judgment text para updated successfully!");
+      handleCancel();
     } catch (error) {
       console.error("Error updating judgment text para:", error);
-      alert(`Error: ${error.message}`);
+      alert(`Failed to update: ${error.response?.data || error.message}`);
     } finally {
       setSaving(false);
     }
-  };
+};
 
   // Status Badge (add before return statement)
   const StatusBadge = () => {

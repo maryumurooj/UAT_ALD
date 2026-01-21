@@ -274,7 +274,7 @@ const SidePanel = ({
         }
 
         // No cache, fetch fresh data
-        const response = await api.get("/api/dropdown-data-cache");
+        const response = await api.get("/api/uat/dropdown-data-cache");
         const data = response.data;
 
         // Set data in state
@@ -302,7 +302,7 @@ const SidePanel = ({
       setIsLoading(true);
       createSearchContext("TOPIC INDEX", { topic });
 
-      const response = await api.get("/api/searchByTopic", {
+      const response = await api.get("/api/uat/searchByTopic", {
         params: { topic },
       });
 
@@ -392,7 +392,7 @@ const SidePanel = ({
       });
 
       // Use Axios instance with params
-      const response = await api.get("/api/searchByCaseNo", {
+      const response = await api.get("/api/uat/searchByCaseNo", {
         params: { caseinfo: caseNoText },
       });
 
@@ -437,7 +437,7 @@ const SidePanel = ({
         advocateName: advocateNameValue,
       });
 
-      const response = await api.get("/api/searchByAdvocate", {
+      const response = await api.get("/api/uat/searchByAdvocate", {
         params: { advocateName: advocateNameValue },
       });
       const data = response.data;
@@ -469,7 +469,7 @@ const SidePanel = ({
       setIsLoading(true);
       createSearchContext("JUDGE INDEX", { judge: judge });
 
-      const response = await api.get("/api/searchByJudge", {
+      const response = await api.get("/api/uat/searchByJudge", {
         params: { judge },
       });
       const data = response.data;
@@ -511,7 +511,7 @@ const SidePanel = ({
         citationText: CitationText,
       });
 
-      const response = await api.get("/api/searchByCitation", {
+      const response = await api.get("/api/uat/searchByCitation", {
         params: { CitationText: CitationText },
       });
       const data = response.data;
@@ -855,7 +855,7 @@ const handleFullCitationChange = (e) => {
     // SubSection Fetching
    const fetchSubsections = async (legislationSectionId) => {
     try {
-      const response = await api.get("/api/subsections", {
+      const response = await api.get("/api/uat/subsections", {
         params: { legislationSectionId }
       });
   

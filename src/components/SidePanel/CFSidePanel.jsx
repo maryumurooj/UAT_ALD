@@ -394,17 +394,17 @@ function SidePanel({
       };
 
       const response = await api.post("/api/uat/searchAdvanced", searchData);
-      const data = await response.json();
+      const data = await response.data;
 
       if (!data) {
         console.error("empty sql response");
-        setJudgementData(null);
-        return;
+              setResults([]);
+              return;
       }
 
       if (data.error) {
         console.error("SQL API error:", data.error);
-        setJudgmentData(null);
+        setResults([]);
         return;
       }
 
@@ -412,12 +412,12 @@ function SidePanel({
         console.error("Unexpected data format:", data);
         throw new Error("Unexpected data format from SQL API");
       }
-
       //console.log('SQL API Response:', data);
       return data;
     } catch (error) {
       console.error("Error running SQL search:", error);
-      setJudgmentData(null);
+      setResults([]);
+      return []; // ✅ Return empty array on error
     }
   };
 
@@ -498,7 +498,7 @@ function SidePanel({
   useEffect(() => {
     const fetchAdvocates = async () => {
       try {
-        const response = await api.get("/api/all-advocate");
+        const response = await api.get("/api/uat/all-advocate");
         setAdvocateList(response.data.advocates || response.data);
         //console.log("Advocates fetched:", response.data);
       } catch (error) {
@@ -510,7 +510,7 @@ function SidePanel({
   
   const fetchSections = async (legislationId) => {
     try {
-      const response = await api.get(`/api/sections?legislationId=${legislationId}`);
+      const response = await api.get(`/api/uat/sections?legislationId=${legislationId}`);
       setSectionList(response.data.sections || response.data);
     } catch (error) {
       console.error("Error fetching sections:", error.message || error);
@@ -546,7 +546,7 @@ function SidePanel({
 
   const fetchSubsections = async (legislationSectionId) => {
     try {
-      const response = await api.get(`/api/subsections?legislationSectionId=${legislationSectionId}`);
+      const response = await api.get(`/api/uat/subsections?legislationSectionId=${legislationSectionId}`);
       setSubsectionList(response.data.subsections || response.data);
     } catch (error) {
       console.error("Error fetching subsections:", error.message || error);
@@ -565,7 +565,7 @@ function SidePanel({
       const CitationText = selectedCitation.judgmentCitation || '';
       if (!CitationText) return;
   
-      const response = await api.get(`/api/searchByCitation`, {
+      const response = await api.get(`/api/uat/searchByCitation`, {
         params: { CitationText },
       });
   

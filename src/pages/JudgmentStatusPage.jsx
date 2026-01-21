@@ -40,12 +40,8 @@ const JudgmentStatusPage = () => {
     const fetchAllJudgments = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`${API_BASE}/judgmentstat/list`);
-            const result = await response.json();
-
-            if (result.success && result.data) {
-                setAllJudgments(result.data);
-            }
+            const response = await api.get(`/api/uat/judgmentstat/list`);
+            setAllJudgments(Array.isArray(response.data.data) ? response.data.data : []);
         } catch (error) {
             console.error('Error:', error);
             alert('Failed to load judgments');
@@ -123,10 +119,8 @@ const JudgmentStatusPage = () => {
                 const batch = idsArray.slice(i, i + batchSize);
                 await Promise.all(
                     batch.map(id =>
-                        fetch(`${API_BASE}/judgment-status/${id}`, {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ status: newStatus })
+                        api.put(`/api/uat/judgment-status/${id}`, { 
+                            status: newStatus 
                         })
                     )
                 );

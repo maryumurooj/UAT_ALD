@@ -2,7 +2,7 @@
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 
-const API_BASE_URL = "http://localhost:4001";
+const API_BASE_URL = "https://api3.aldonlinelive.com";
 const SYNC_BASE_URL = "https://sync.aldonlinelive.com";
 
 const API_KEY = "MJCET160420737055";
