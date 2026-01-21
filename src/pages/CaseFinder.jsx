@@ -233,13 +233,33 @@ useEffect(() => {
 
   const handleSearchById = async (judgmentId) => {
     try {
-      const response = await fetch(`http://61.246.67.74:4000/api/uat/judgments/${judgmentId}`);
-      const data = await response.json();
-      console.log("Received data:", data); // Log the received data
-      setJudgmentData(data);
-      
+      const response = await api.get(`/api/uat/judgments/${judgmentId}`);
+      const data =  response.data;
+      if (!data || data.error) {
+        console.error("Error in response data:", data?.error);
+        setJudgmentData(null);
+  
+        toast.error(
+          data?.message ||
+          data?.error ||
+          "Failed to load judgment"
+        );
+        return;
+      }
+
+      console.log("Received data:", data);
+    setJudgmentData(data);
+
+
     } catch (error) {
-      console.error('Error fetching judgment:', error);
+ console.error("Error fetching judgment:", error);
+    setJudgmentData(null);
+
+    toast.error(
+      error.response?.data?.message ||
+      error.message ||
+      "Unauthorized or failed to fetch judgment"
+    );
     }
     finally {
       setIsLoading(false); // End loading

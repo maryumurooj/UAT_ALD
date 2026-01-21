@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ProfileDashboard.module.css";
 import Profile from "../components/Authentication/Profile";
-import Bookmark from "./Bookmark";
-import Notes from "./Notes.jsx";
 import { signOut } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
 import { Navigate, useNavigate } from "react-router";
@@ -16,8 +14,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from "@mui/icons-material/Person";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import NoteIcon from "@mui/icons-material/Note";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Box from "@mui/material/Box";
 import SyncIcon from "@mui/icons-material/Sync";
@@ -102,8 +98,7 @@ const AdminDashboard = () => {
 
   const menuItems = [
     { id: "profile", icon: <PersonIcon />, text: "Profile" },
-    { id: "Bookmark", icon: <BookmarkIcon />, text: "Bookmarks" },
-    { id: "Notes", icon: <NoteIcon />, text: "Notes" },
+
     //{ id: "settings", icon: <SettingsIcon />, text: "Settings" },
   ];
 
@@ -160,12 +155,8 @@ const AdminDashboard = () => {
 
   const renderFormContent = () => {
     switch (activeTab) {
-      case "Notes":
-        return <Notes uid={user.uid} />;
       case "profile":
         return <Profile />;
-      case "Bookmark":
-        return <Bookmark />;
       default:
         return <div className={styles.defaultContent}>Select an option from the sidebar.</div>;
     }

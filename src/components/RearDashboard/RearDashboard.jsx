@@ -371,7 +371,7 @@ const RearDashboard = forwardRef(
     useEffect(() => {
       const fetchCourts = async () => {
         try {
-          const response = await api.get("/api/all-courts");
+          const response = await api.get("/api/uat/all-courts");
           //  console.log("Raw courts response:", response);
 
           // The API returns an array directly

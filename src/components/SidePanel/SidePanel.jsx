@@ -898,7 +898,7 @@ const handleFullCitationChange = (e) => {
   useEffect(() => {
     const fetchPublications = async () => {
       try {
-        const response = await api.get('/api/publications'); // Axios automatically uses baseURL
+        const response = await api.get('/api/uat/publications'); // Axios automatically uses baseURL
         setPublications(response.data); // Axios already parses JSON
       } catch (error) {
         console.error('Error fetching publications:', error);

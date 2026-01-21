@@ -39,20 +39,7 @@ const Navbar = () => {
           className={getClassName("/judges-profile")}>JUDGES</button>
           </div>
         </div>
-        <div className={styles.dropdown}>
-          <button className={getClassName("/dashboard")}>DASHBOARD</button>
-          <div className={styles.dropdownContent}>
-            <button onClick={() => window.open("https://cdb.sci.gov.in//", "_blank")}>
-              SUPREME COURT OF INDIA
-            </button>
-            <button onClick={() => window.open("https://aphc.gov.in/Hcdbs/displayboard.jsp", "_blank")}>
-              HIGH COURT OF ANDHRA PRADESH
-            </button>
-            <button onClick={() => window.open("https://displayboard.tshc.gov.in/hcdbs/displayall", "_blank")}>
-              HIGH COURT OF TELANGANA
-            </button>
-          </div>
-        </div>
+        
         <button
           onClick={handleNavigation("/judgments")}
           className={getClassName("/judgments")}
