@@ -268,15 +268,7 @@ function Home() {
         ref={section2Ref}
         className={`${styles.section2} ${styles.sectionscroll}`}
       >
-        <div
-          className={`${styles.scrollBar} ${
-            showScrollBanner ? styles.visible : ""
-          }`}
-          onClick={scrollToNextSection}
-        >
-          Explore Our Legal Publications
-          <div className={styles.scrollBarArrow} />
-        </div>
+        
         {/* Rest of Section 2 content */}
         <div className={styles.content}>
           <div className={styles.LeftCol}>
@@ -286,7 +278,7 @@ function Home() {
                 boxVisible ? styles.boxVisible : ""
               }`}
             >
-              <h2>Newly Added Judgments</h2>
+              <h2>In Progress Judgments</h2>
               <div className={styles.judgmentsList}>
                 {judgments.map((judgment) => (
                   <div
@@ -314,54 +306,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className={styles.RightCol}>
-            <div
-              ref={(el) => (boxesRef.current[2] = el)}
-              className={`${styles.box2} ${
-                boxVisible ? styles.boxVisible : ""
-              }`}
-            >
-              <Slider {...settings}>
-                <div className={styles.imgbox}>
-                  <img
-                    className={styles.image}
-                    src={SupremeCourt}
-                    alt="Supreme Court"
-                  />
-                </div>
-                <div className={styles.imgbox}>
-                  <img
-                    className={styles.image}
-                    src={HighCourtPhoto}
-                    alt="High Court of Andhra Pradesh"
-                  />
-                </div>
-                <div className={styles.imgbox}>
-                  <img
-                    className={styles.image}
-                    src={THighCourtPhoto}
-                    alt="High Court of Andhra Pradesh"
-                  />
-                </div>
-              </Slider>
-            </div>
-            <div
-              ref={box4Ref}
-              className={`${styles.box4} ${
-                boxVisible ? styles.boxVisible : ""
-              }`}
-              onClick={() => navigate("/subscription-tier")}
-            >
-              <h2 className="mb-0">Discover Our Resources</h2>
-              <p ref={(el) => (textRef.current = el)}>
-                ALD Online is a user-friendly and efficient legal research
-                platform designed for busy lawyers, the Bench, and the Bar. It
-                provides fast and accurate results, helps track binding
-                authorities, assists in case law research, and verifies the
-                current status of judgments. Start your free trial today! <br />
-              </p>
-            </div>
-          </div>
+          
         </div>
       </section>
     </div>

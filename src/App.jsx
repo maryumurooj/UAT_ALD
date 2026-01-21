@@ -424,23 +424,28 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Aboutus />} />
-            <Route path="/index" element={<IndexPage />} />
             <Route path="/confirmation" element={<ThankMessage />} />
-            <Route path="/judgment/:judgmentCitation" element={<IndexPage />} />
-            <Route path="/judges-profile" element={<JudgesProfile />} />
-            <Route path="/pad" element={<Pad />} />
-            <Route path="/articles" element={<ArticleResults />} />
-            <Route path="/judge-read/:fileName" element={<JudgeRead />} />
-            <Route path="/article-read/:fileName" element={<ArticleRead />} />
             <Route path="/statutes" element={<Statutes />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Auth />} />
-            <Route path="/casefinder" element={<CaseFinder />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/billingAddress" element={<BillingAddress />} />
-
+            
+            <Route
+              path="/index"
+              element={<ProtectedRoute element={<IndexPage />} />}
+            />
+           <Route
+              path="/casefinder"
+              element={<ProtectedRoute element={<CaseFinder />} />}
+            />
+           <Route
+              path="/judgment/:judgmentCitation"
+              element={<ProtectedRoute element={<IndexPage />} />}
+            />
+           
             <Route
               path="/judgments"
               element={<ProtectedRoute element={<JudgmentStatusPage />} />}

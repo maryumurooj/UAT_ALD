@@ -33,11 +33,7 @@ const Navbar = () => {
             <button onClick={handleNavigation("/casefinder")}
           className={getClassName("/casefinder")}>ADVANCED SEARCH</button>
             
-            <button  onClick={handleNavigation("/articles")}
-          className={getClassName("/articles")}>ARTICLES</button>
-            <button onClick={handleNavigation("/judges-profile")}
-          className={getClassName("/judges-profile")}>JUDGES</button>
-          </div>
+           </div>
         </div>
         
         <button
